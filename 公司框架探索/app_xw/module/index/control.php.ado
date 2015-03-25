@@ -1,0 +1,765 @@
+<?php
+/**
+ * The control file of index module of CandorPHP.
+ *
+ * @copyright   Copyright: 2010
+ * @author      LuoDong <751450467@qq.com>
+ * @package     CandorPHP
+ * @version     $Id: control.php,v 1.4 2012/02/16 09:53:49 lj Exp $
+ */
+class index extends SecuredControl
+{
+	/**
+	 * 数据库连接。
+     * 
+     * @var object
+     * @access pdo
+     */
+	protected $pdo;
+
+    /* 构造函数。*/
+    public function __construct()
+    {
+        parent::__construct();
+		//phpinfo();exit;
+		$conn = new DbHelper();
+		$this->pdo = $conn->conn; 
+		$sql = 'select * from project where id=0';
+		//$projectList = $this->pdo->GetAll($sql);
+		//print_r($projectList);
+		//$rs = $this->pdo->Execute($sql);
+		//exit;
+		/*
+		$connectionOptions = array(   
+		'dbname' => 'db_9533',   
+		'user' => 'root',   
+		'password' => '',   
+		'host' => '127.0.0.1',   
+		'driver' => 'pdo_mysql',   
+		);  
+
+		//spl_autoload_register(array('Doctrine', 'autoload'));
+
+		// create Doctrine manager
+		$manager = Doctrine_Manager::getInstance();
+
+		// create database connection
+		$conn = Doctrine_Manager::connection('mysql://wasp:wasp@localhost/wasp', 'doctrine');
+
+		// auto-generate models
+		Doctrine::generateModelsFromDb('models', array('doctrine'), array('generateTableClasses' => true));
+
+				exit;
+		*/
+				//print_r($this->global->userinfo);
+		//		$this->soap = $this->index->soap;
+		//		$this->prosoap = $this->index->prosoap;
+    }
+    
+	public function test(){
+		echo "document.getElementById('photo').innerHTML='hi, my name is jkl';";
+	}
+
+    public function ui(){
+    	$this->display('index','ui');
+    }
+	public function uii(){
+    	$this->display('index','uii');
+    }
+	public function uiii(){
+    	$this->display('index','uiii');
+    }
+
+	public function demo(){
+		//$this->display('index','persontop');exit;
+		$this->display('index','desktop');exit;
+		$this->display('index','desktop_demo');exit;
+		$this->assign('curstep','1');
+		//$this->display('index','desktop');
+		require_once($this->app->getAppRoot()."www\js\amcharts\settings.php");
+		$username =  $_SESSION['userRelateInfo']['LOGIN_ID'];		
+//		$this->loadModel('tax_paytaxes');
+//		$params['USERID'] = $this->tax_paytaxes->getsubuserlist($_SESSION["userRelateInfo"]["USERID"]);
+//		if(empty($_SESSION[__CLASS__.'_desktop_project_'.$params['LOGIN_ID']])){	
+//			$list = $this->soap->getSqlidInfo('taxbiz_desktop_project',$params);
+//			$_SESSION[__CLASS__.'_desktop_project_'.$params['LOGIN_ID']] = $list;
+//		}else{
+//			$list=$_SESSION[__CLASS__.'_desktop_project_'.$params['LOGIN_ID']];
+//		}
+//
+//		if(empty($_SESSION[__CLASS__.'_desktop_estatetax_'.$params['LOGIN_ID']])){			
+//			$estatetaxlist = $this->soap->getSqlidInfo('taxbiz_desktop_estatetax',$params);
+//			$_SESSION[__CLASS__.'_desktop_estatetax_'.$params['LOGIN_ID']] = $estatetaxlist;
+//		}else{
+//			$estatetaxlist=$_SESSION[__CLASS__.'_desktop_estatetax_'.$params['LOGIN_ID']];
+//		}
+//
+//		if(empty($_SESSION[__CLASS__.'_desktop_newproject_'.$params['LOGIN_ID']])){			
+//			$newprojlist = $this->soap->getSqlidInfo('taxbiz_desktop_newproject',$params);
+//			$_SESSION[__CLASS__.'_desktop_newproject_'.$params['LOGIN_ID']] = $newprojlist;
+//		}else{
+//			$newprojlist=$_SESSION[__CLASS__.'_desktop_newproject_'.$params['LOGIN_ID']];
+//		}
+////		if(!empty($list)||!empty($newprojlist)){		
+//			$bar['width']='630';
+//			$bar['height']='320';
+//			$bar['column.balloon_text']='{value}万元';
+//
+//			$estchart = new amcharts_AmBarChart("estcharts");
+//			$estchart->addLabel("<b>不动产纳税统计</b>", 0, 20,array('text_size'=>'14','align'=>'center'));
+//			$estchart->setConfigAll($bar);
+//			foreach ($estatetaxlist as $k=>$v){
+//				$estchart->addSerie($v['STATUS'].'月',$v['STATUS'].'月');
+//				$alinetot[$v['STATUS'].'月'] = $v['YYSJFJRKE'];// 
+//				$blinetot[$v['STATUS'].'月'] = $v['TDZZSRKE'];// 图形数据
+//				$clinetot[$v['STATUS'].'月'] = $v['QYSDSRKE'];// 图形数据
+//			}	
+//			if(!empty($alinetot)) $estchart->addGraph("aline", "营业额及附加", $alinetot);
+//			if(!empty($blinetot)) $estchart->addGraph("bline", "土地增值税", $blinetot, array('color'=>'FEC514'));
+//			if(!empty($clinetot)) $estchart->addGraph("cline", "企业所得税", $clinetot, array('color'=>'0066CC'));
+//
+//			$this->assign('estatechartdata',$estchart->getCode());
+//
+
+//		}
+//		
+//		
+////		$params['USERID'] =  $_SESSION['userRelateInfo']['USERID'];
+//		$CMPCNT = $this->soap->getSqlidInfo('get_usermanagerange_count',$params);
+//		$pagedata['cmpcnt'] = $CMPCNT[0]['CNT'];
+//		$params['where'] = ' c.cmpid in (select orgid from SYSTEM.CYUSERORG where userid IN ('.$params['USERID'].'))';
+//		$params['order'] = ' a.ID desc' ;
+//		$PROCNT = $this->soap->getSqlidInfo('get_projectlist',$params);		
+//		$pagedata['procnt'] = count($PROCNT);
+//		$params['condition'] = ' projid in (SELECT b.id FROM SYSTEM.CYUSERORG a inner join taxbiz.project b on a.orgid=b.cmpid where a.userid IN ('.$params['USERID'].'))'; 
+//		$PRESCNT = $this->soap->getSqlidInfo('get_presellcount',$params);			
+//		$pagedata['prescnt'] = $PRESCNT[0]['CNT'];
+//		$pagedata['username'] = $_SESSION['userRelateInfo']['TRUENAME']; 
+//		$this->assign('pagedata',$pagedata);
+//		$this->assign('newprojlist',$newprojlist);
+//		$this->display('index','persontop');
+		if(isset($username)&&$username=='ADMIN'){
+
+			
+			/* 设计图形 bar应该在pie前面设置不然会出现【图形数据加载 ...】提示*/
+			$bar['width']='705';
+			$bar['height']='280';
+			$bar['column.balloon_text']='{value}万元';
+			$bar['plot_area.margins.left']='60';//设置Y轴左边距	
+			$bar['background.file']='';
+			$bar['background.alpha']='0';
+			$chart = new amcharts_AmBarChart("stotcharts");
+			$chart->setConfigAll($bar);
+			$list = array(array('STATUS'=>'1月','TOT'=>rand(1,20)),array('STATUS'=>'2月','TOT'=>rand(1,20)),array('STATUS'=>'3月','TOT'=>rand(1,20)),array('STATUS'=>'4月','TOT'=>rand(1,20)),array('STATUS'=>'5月','TOT'=>rand(1,20)),array('STATUS'=>'6月','TOT'=>rand(1,20)),array('STATUS'=>'7月','TOT'=>rand(1,20)),array('STATUS'=>'8月','TOT'=>'8'),array('STATUS'=>'9月','TOT'=>'9'),array('STATUS'=>'10月','TOT'=>'10'),array('STATUS'=>'11月','TOT'=>'11'),array('STATUS'=>'12月','TOT'=>'12'));
+			foreach ($list as $k=>$v){
+				$chart->addSerie($v['STATUS'],$v['STATUS']);
+				$linetot[$v['STATUS']] = $v['TOT'];// 图形数据
+			}	
+			if(!empty($linetot)) $chart->addGraph("line", "收入额", $linetot, array('color'=>'C81209'));
+			$this->assign('chartdata',$chart->getCode());
+
+			/* 设计图形 */
+
+			$pie['width']='305';
+			$pie['height']='300';
+			$pie['pie.inner_radius']='15';
+//			$pie['balloon.show']='{title}: {value} 份. ({percents}%) <br>{description}';
+
+			$estchart = new amcharts_AmPieChart("estcharts");			
+			$pie['data_labels.show']='{title}:{value}万';	
+			$estchart->setConfigAll($pie);
+			$list1 = array(array('STATUS'=>'房屋','TOT'=>rand(1,20)),array('STATUS'=>'土地','TOT'=>rand(1,20)),array('STATUS'=>'广告','TOT'=>rand(1,20)),array('STATUS'=>'站场','TOT'=>rand(1,20)),array('STATUS'=>'车场','TOT'=>rand(1,20)));
+			foreach($list1 as $k=>$v){
+				$estchart->addSlice("pie".$k, $v['STATUS'],$v['TOT']);		
+			}
+
+//			if(!empty($linetot1)) $estchart->addGraph("line", "金额", $linetot1, array('color'=>'rgb(241, 140, 6)'));
+			$this->assign('estchartdata',$estchart->getCode());
+			$this->display('index','desktop');
+		}else{
+			$bar2['width']='335';
+			$bar2['height']='280';
+			$bar2['column.balloon_text']='{value},000万元';
+			$bar2['plot_area.margins.left']='60';//设置Y轴左边距	
+			$bar2['background.file']='';
+			$bar2['background.alpha']='0';
+			$bar2['depth']='10'; $bar2['column.grow_time']='2';
+			$emacharta = new amcharts_AmBarChart("emacharts");
+			$emacharta->setConfigAll($bar2);
+			$lista = array(array('STATUS'=>'土地','TOT'=>rand(1,20)),array('STATUS'=>'房屋','TOT'=>rand(1,20)),array('STATUS'=>'站场','TOT'=>rand(1,20)),array('STATUS'=>'车场','TOT'=>rand(1,20)),array('STATUS'=>'广告位','TOT'=>rand(1,20)));
+			foreach ($lista as $ka=>$va){
+				$emacharta->addSerie($va['STATUS'],$va['STATUS']);				
+				$linetota[$va['STATUS']] = $va['TOT'];// 图形数据
+				$blinetot[$va['STATUS']] = rand(1,20);// 图形数据
+			}	
+			if(!empty($linetota)) $emacharta->addGraph("line", "上月", $linetota, array('color'=>'C81209'));
+			if(!empty($blinetot)) $emacharta->addGraph("bline", "本月", $blinetot, array('color'=>'FEC514'));
+
+
+			$linebar['width']='670';
+			$linebar['height']='330';
+			$linebar['column.balloon_text']='';	
+			$slvchart = new amcharts_AmLineChart("slinecharts");
+			$slvchart->addLabel("收益率", 0, 30,array('text_size'=>'12','align'=>'left','lid'=>''));
+			$bar['plot_area.margins.left']='60';//设置Y轴左边距
+			$slvchart->setConfigAll($linebar);
+			$lista = array(array('STATUS'=>'1月','TOT'=>rand(1,20)),array('STATUS'=>'2月','TOT'=>rand(1,20)),array('STATUS'=>'3月','TOT'=>rand(1,20)),array('STATUS'=>'4月','TOT'=>rand(1,20)),array('STATUS'=>'5月','TOT'=>rand(1,20)),array('STATUS'=>'6月','TOT'=>rand(1,20)),array('STATUS'=>'7月','TOT'=>rand(1,20)),array('STATUS'=>'8月','TOT'=>'8'),array('STATUS'=>'9月','TOT'=>'9'),array('STATUS'=>'10月','TOT'=>'10'),array('STATUS'=>'11月','TOT'=>'11'),array('STATUS'=>'12月','TOT'=>'12'));
+			foreach ($lista as $kc=>$vc){
+				$slvchart->addSerie($kc,$vc['STATUS']);
+				$stotLinea[$kc] = $vc['TOT'];
+				$stotLineb[$kc] = rand(1,20);
+				$stotLinec[$kc] = rand(5,25);
+				$stotLined[$kc] = rand(10,30);
+				$stotLinee[$kc] = rand(15,35);
+			}
+			// 载入【交易套数】图形数据
+			if(!empty($stotLinea)) $slvchart->addGraph("stotLinea", "土地", $stotLinea);
+			if(!empty($stotLineb)) $slvchart->addGraph("stotLineb", "房屋", $stotLineb, array('color'=>'C81209'));
+			if(!empty($stotLinec)) $slvchart->addGraph("stotLinec", "车场", $stotLinec, array('color'=>'FEC514'));
+			if(!empty($stotLined)) $slvchart->addGraph("stotLined", "站场", $stotLined, array('color'=>'C81209'));
+			if(!empty($stotLinee)) $slvchart->addGraph("stotLinee", "广告位", $stotLinee, array('color'=>'C81209'));
+
+
+			$this->assign('slvchartdata',$slvchart->getCode());			
+			$this->assign('emachartdata',$emacharta->getCode());
+
+			$this->display('index','persontop_ema_js1');
+		}
+		
+		
+//		$params['USERID'] =  $_SESSION['userRelateInfo']['USERID'];
+		$CMPCNT = $this->soap->getSqlidInfo('get_usermanagerange_count',$params);
+		$pagedata['cmpcnt'] = $CMPCNT[0]['CNT'];
+		$params['where'] = ' a.cmpid in (select orgid from SYSTEM.CYUSERORG where userid IN ('.$params['USERID'].'))';
+		$PROCNT = $this->soap->getSqlidInfo('get_projectlist',$params);		
+		$pagedata['procnt'] = count($PROCNT);
+		$params['condition'] = ' projid in (SELECT b.id FROM SYSTEM.CYUSERORG a inner join taxbiz.project b on a.orgid=b.cmpid where a.userid IN ('.$params['USERID'].'))'; 
+		$PRESCNT = $this->soap->getSqlidInfo('get_presellcount',$params);			
+		$pagedata['prescnt'] = $PRESCNT[0]['CNT'];
+		$pagedata['username'] = $_SESSION['userRelateInfo']['TRUENAME']; 
+		$this->assign('pagedata',$pagedata);
+		$this->assign('newprojlist',$newprojlist);
+		$this->display('index','desktop');
+	}
+
+    /* index方法，也是默认的方法。*/
+    public function index()
+    {
+        //print_r($_SESSION);
+		if($this->config->debug){
+			$SQL = "select * from project";
+		}else{
+			$SQL = "select * from project where flag>0";
+		}
+		//print_r($_SESSION['userRelateInfo']);
+		$projectList = $this->pdo->GetAll($SQL);
+		//print_r($projectList);exit;
+		if($_SESSION['userRelateInfo']['ISADMIN']!=1){
+			$pro_role = $this->getProRole($_SESSION['userRelateInfo']['RIGHTS']);
+			foreach ($projectList as $k=>$v){
+				if(!in_array($v['project_name'],$pro_role['mod'])){
+					unset($projectList[$k]);
+				}
+			}
+			$projectList = array_values($projectList);
+		}
+		if($this->config->debug){
+			$SQL = "select top 11 * from module";
+		}else{
+			$SQL = "select top 11 * from module where project_code =".$projectList[0]['project_code']." and parent_module=0";
+		}
+		$moduleList = $this->pdo->GetAll($SQL);//print_r($moduleList);
+        if($_SESSION['userRelateInfo']['ISADMIN']!=1){
+            $pro_role = $this->getProRole($_SESSION['userRelateInfo']['RIGHTS'],true);
+            foreach ($moduleList as $k=>$v){ 
+                if(!empty($v['module_name'])&&!in_array($v['module_name'],$pro_role['mod'])||!in_array($v['business_name'],$pro_role['name'])){
+                    unset($moduleList[$k]);
+                }
+            }
+        }
+		
+		$header['title'] = $this->lang->welcome;
+        $this->assign('header',  $header);
+		$this->assign('projectList', $projectList);
+		$this->assign('moduleList',$moduleList);
+        $this->display('index','index');
+    }
+
+	/* auth del--------------*/
+    public function auth()
+    {
+		$this->display('index','auth');
+    }
+
+	/* 设置应用 */
+	public function set_app()
+	{
+		if($this->config->debug){
+			$SQL = "select * from project";
+		}else{
+			$SQL = "select * from project where flag>0";
+		}
+		$projectList = $this->pdo->GetAll($SQL);
+        if($_SESSION['userRelateInfo']['ISADMIN']!=1){
+            $pro_role = $this->getProRole($_SESSION['userRelateInfo']['RIGHTS']);
+            foreach ($projectList as $k=>$v){
+                if(!in_array($v['project_name'],$pro_role)){
+                    unset($projectList[$k]);
+                }
+            }
+            $projectList = array_values($projectList);
+        }
+		$this->assign('projectList', $projectList);
+
+		if($this->config->debug){
+			$SQL = "select * from module";
+		}else{
+			$SQL = "select * from module where flag=1";
+		}
+		$moduleList = $this->pdo->GetAll($SQL);
+
+        if($_SESSION['userRelateInfo']['ISADMIN']!=1){
+            $pro_role = $this->getProRole($_SESSION['userRelateInfo']['RIGHTS'],true);
+            foreach ($moduleList as $k=>$v){ 
+                if(!empty($v['module_name'])&&!in_array($v['module_name'],$pro_role['mod'])||!in_array($v['business_name'],$pro_role['name'])){
+                    unset($moduleList[$k]);
+                }
+            }
+        }
+        //print_r($moduleList);
+		foreach($moduleList as $key=>$item){
+			//判断模块是否注册模块
+			if(helper::chechKey($item['serial_number']))
+			{
+                $moduleName = explode("/",$item['module_name']) ;
+                $moduleName = count($moduleName) > 0 ? $moduleName[0] : $moduleName ;
+				$currentConfig = $this->app->getmoduleRoot()."/".$moduleName."/config.php";
+				if(file_exists($currentConfig))
+				{
+					//require_once($currentConfig);
+					$moduleList[$key]['icon'] = $item['app_icon'] ;
+				}else{
+					unset($moduleList[$key]);
+				}
+			}
+		}
+		$this->assign('moduleList',$moduleList);
+        $this->assign('header',  "设置应用");
+        $this->display('index','set_app');
+	}
+	
+	/* ajax 获取子菜单信息 */
+	public function ajaxSubMenu() {
+		//从sqlite中获取子菜单信息
+		$pid = isset($_POST['pid'])?$_POST['pid']:'0';
+		//$sqlite = new Sqlite();
+		if($this->config->debug){
+			$SQL = "select * from module where project_code=".$pid." and parent_module=0";
+		}else{
+			$SQL = "select * from module where flag=1 and project_code=".$pid." and parent_module=0";
+		}
+		$subMenuList = $this->pdo->getAll($SQL);
+		//$liList = array();
+		if(count($subMenuList)<1){
+			echo "该模块没有子模块";
+		}
+		if($_SESSION['userRelateInfo']['ISADMIN']!=1){
+			$pro_role = $this->getProRole($_SESSION['userRelateInfo']['RIGHTS'],true);
+			foreach ($subMenuList as $k=>$v){ 
+				if(!empty($v['module_name'])&&!in_array($v['module_name'],$pro_role['mod'])){
+					unset($subMenuList[$k]);
+				}
+			}
+		}
+
+		$liString ="";
+		foreach($subMenuList as $key=>$item){
+			//判断该模块是否存在子模块
+			$sqlcount = "select count(id) as cnt from module where flag = 1 and parent_module=".$item['id'];
+			$childCount = $this->pdo->getRow($sqlcount);
+			if($childCount['cnt']>0){
+				$liString .= '<li><a hidefocus="hidefocus" class="expand"><span>'.$item['business_name'].'</span></a>';
+				$sql = "select * from module where flag = 1 and parent_module=".$item['id'];
+                $childList = $this->pdo->getAll($sql); 
+				if($_SESSION['userRelateInfo']['ISADMIN']!=1){
+					foreach ($childList as $k=>$v){ 
+						if(!empty($v['module_name'])&&!in_array($v['module_name'],$pro_role['mod'])||!in_array($v['business_name'],$pro_role['name'])){
+							unset($childList[$k]);
+						}
+					}
+				}
+                $liString .= '<ul style="display:none">';
+				foreach($childList as $ckye=>$citem){						
+					$liString .= ' <li><a hidefocus="hidefocus" href="javascript:frameWorkTab(\'app_'.$citem['id'].'\',\''.$citem['business_name'].'\',\'/'.$citem['module_name'].'\');" id="f60"><span>'.$citem['business_name'].'</span></a></li>';
+				}
+				$liString .='</ul></li>';
+			}else{
+				$liString .= '<li><a hidefocus="hidefocus" href="javascript:frameWorkTab(\'app_'.$item['id'].'\',\''.$item['business_name'].'\',\'/'.$item['module_name'].'\');"><span>'.$item['business_name'].'</span></a></li>';
+			}
+		}
+		echo $liString;
+	}
+
+	/* ajax 获取信息 */
+	public function ajaxList() {
+		$page = isset($_GET['page'])?$_GET['page']:1;  // 获得当前请求页
+		$limit = isset($_GET['rows'])?$_GET['rows']:20; // 获得当前表格显示的行数
+		$sidx = isset($_GET['sidx'])?$_GET['sidx']:'id';  // 获得主键 - 点击开始排序
+		$sord = isset($_GET['sord'])?$_GET['sord']:'desc';  // 获得排序规则
+		if(!$sidx) $sidx =1;
+		//初始化DB连接
+        $this->pdo = new MysqlPdo();
+		$result = $this->pdo->getRow("SELECT COUNT(*) AS count FROM home_esf");
+		$count = $result['count'];
+
+		if( $count >0 ) {
+			$total_pages = ceil($count/$limit);
+		} else {
+			$total_pages = 0;
+		}
+		if ($page > $total_pages) $page=$total_pages;
+		$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+		$SQL = "SELECT a.id, a.title, a.address, a.user_name,a.reside,a.price,a.telphone FROM home_esf a ORDER BY $sidx $sord LIMIT $start , $limit";
+		$result = $this->pdo->getAll( $SQL );
+		//创建返回数据
+		$responce->page = $page;
+		$responce->total = $total_pages;
+		$responce->records = $count;
+		for($i=0;$i<count($result);$i++){
+			$row = $result[$i];
+			$responce->rows[$i]['id']=$row[id];
+			$responce->rows[$i]['cell']=array($row[id],$row[title],$row[address],$row[user_name],$row[reside],$row[price],$row[telphone]);
+		}     
+		echo json_encode($responce);
+		//http://www.fg.com/index/ajaxList.php?q=2&_search=true&nd=1337917908557&rows=10&page=1&sidx=id&sord=desc&searchField=id&searchString=148&searchOper=eq&filters=
+		//http://www.trirand.com/bl/server.php?q=1&_search=true&nd=1337918180532&rows=10&page=1&sidx=id&sord=desc&searchField=id&searchString=11 &searchOper=eq&filters=
+	}
+
+	//LDAP
+	function ldap(){
+		/*
+		$ds=ldap_connect('127.0.0.1');
+		$justthese = array('cn','userpassword','location');
+		$sr=ldap_search($ds,"o=army", "cn=dom*", $justthese);
+		echo 'domadmin姓氏有'.ldap_count_entries($ds,$sr).'个';
+		$info = ldap_get_entries($ds, $sr);
+		echo "资料传回 ".$info["count"]."笔:   ";
+		for ($i=0; $i<$info["count"]; $i++) {
+			echo "dn为：". $info[$i]["dn"] ." ";
+			echo "cn为：". $info[$i]["cn"][0] ." ";echo "email为：". $info[$i]["mail"][0] ."   ";
+			echo "email为：". $info[$i]["userpassword"][0] ." ";
+		}
+		*/
+		
+		$ldaprdn = 'dc=fg,dc=com'; 
+		$ldappass = 'password';
+		$sdn = 'ou=技术部,dc=fg,dc=com';
+		$filter = 'cn=罗东';
+
+		echo "Connecting ...\n";
+		$ds=ldap_connect("localhost",389);  // must be a valid LDAP server!
+		echo "connect result is ".$ds."\n\n<br>";
+		if ($ds) {
+			//echo "Binding ($managerdn)...";
+			//$r = ldap_bind($ds, $ldaprdn, $ldappass);
+			//echo "Bind result is ".$r."\n\n";
+			
+			$justthese = array("ou", "sn", "givenname");
+			$sr = ldap_search($ds,$sdn,$filter);
+			$info = ldap_get_entries($ds, $sr);
+			print_r($info);
+			// compare value
+			$r=ldap_compare($ds, "cn=罗东,ou=技术部,dc=fg,dc=com", "password", "123");
+
+			if ($r === -1) {
+				echo "Error: " . ldap_error($ds);
+			} elseif ($r === true) {
+				echo "Password correct.";
+			} elseif ($r === false) {
+				echo "Wrong guess! Password incorrect.";
+			}
+
+			/*
+			$entry = ldap_first_entry($ds, $sr);
+			do {
+			  // do other stuff
+			  $sr = "something else now";
+			  $values = ldap_get_values($ds, $entry, "cn");
+			  //print_r($values);
+			  // do other stuff
+			} while ($entry = ldap_next_entry($ds, $entry));
+
+			$userdn = $this->getDN($ds,'luo jun',$sdn);
+			//print_r($userdn);
+			
+			//echo $info["count"]." entries returned\n";
+
+			//$sr=ldap_read($ds, $sdn,$filter, $justthese);
+			//$entry = ldap_get_entries($ds, $sr);
+			//print_r($entry);
+			*/	
+			ldap_close($ds);
+		}
+
+	}
+
+	function getDN($ad, $samaccountname, $basedn) {
+		$attributes = array('dn');
+		$result = ldap_search($ad, $basedn,
+			"(cn={$samaccountname})", $attributes);
+		if ($result === FALSE) { return ''; }
+		$entries = ldap_get_entries($ad, $result);
+		if ($entries['count']>0) { return $entries[0]['dn']; }
+		else { return ''; };
+	}
+
+	/**
+	+----------------------------------------------------------
+	* 登录
+	+----------------------------------------------------------
+	* @access public 
+	+----------------------------------------------------------
+	* @param 
+	+----------------------------------------------------------
+	* @return 
+	+----------------------------------------------------------
+	*/
+	public function login()
+	{
+		$username = $_POST['username']; //='yanglin' ;
+		$password = $_POST['password']; //='123123';
+		
+		$login = new LoginNew($username,$password);
+		$content = $login->checkUser();
+		if($login->issucess==1)
+		{
+			$msg['status'] = '1' ;
+			foreach ($content as $key=>$item)
+			{
+				if(!empty($item['loginActionUrl']))
+				{
+					$url[$key]=$item['loginActionUrl'];
+					unset($content[$key]['loginActionUrl']);
+				}
+				else 
+				{
+					unset($content[$key]);
+				}
+			}
+			$msg['content'] = $content;
+			$msg['url'] = $url;
+			$msg['count'] = $login->count ;
+		}
+		else 
+		$msg['status'] = '0' ;
+		echo json_encode($msg);exit;
+		
+//		$login = new Login2($username,$password);
+//		//$login->login();
+//		echo $login->getHtmlContent('http://localhost');
+	}
+	public function getHttpHtml()
+	{
+		if(!empty($_GET['u']))
+		{
+			$login = new Login2();
+			$login->getHtmlContent($_GET['u']);
+		}
+	}
+		/* 登录系统 */
+	public function loginAJAX()
+
+	{
+		
+		extract($_POST);
+		/*if(md5($_POST['verify'])!=$_SESSION["verify"]){
+			echo "<script>alert('验证码不正确!');history.back();</script>";
+			exit();
+		}*/
+
+		$username=strtoupper($username);
+		$password = strtoupper($password);
+		$base = new base64();
+		$password = $base->enCrypt($password);
+		 
+		$today=date("Y-m-d");
+		$md5key=md5($password.$today);
+		$md5USBkey = $md5key;
+		if($this->config->usbkey){
+			if($usbkey=="" || !isset($usbkey) ){
+				echo 5;
+				exit;
+			}else{
+				$usbkey = urldecode($usbkey);
+			    $md5USBkey = $md5USBkey.";".$this->config->CheckkeyType.",".$usbkey;
+			}
+		}
+	
+		$user = new User();
+
+		$returnBl = $user->login($username,$password,$md5USBkey);
+		
+//		$password = base64_encode($password);
+
+		/*if($this->config->usbkey){
+				if($usbkey=="" || !isset($usbkey) ){
+					echo 5;
+					exit;
+				}else{
+					$usbkey = urldecode($usbkey);
+					 $client=Util::getSoapClient("http://172.29.21.84:9080/login/wsdl/login/LoginService.wsdl");
+					 $client->decode_utf8 = false;
+					 $client->xml_encoding = 'utf-8';
+			         $client->soap_defencoding = 'utf-8';
+					 $returnBl=$client->getLogin($usbkey);
+					 if($returnBl != iconv('GBK', 'UTF-8',$userRelateInfoArr["username"])){
+					 	session_destroy();
+					 	session_unset();
+					 	echo 6;
+						exit;
+					 }
+				}
+			}
+		*/
+
+		if($returnBl==1){
+			//登录成功
+			$_SESSION['admin'] = true;
+			//获取用户角色
+			$userRole = $user->getUserRole($username,$password,$md5key);
+			
+			$_userArr['LOGIN_ID']= iconv('utf-8','gbk',$username);//$username;
+			$_userArr['PASSWORD']= $password;
+			$_userArr['IDTYPE']= '';
+			$_userArr['OWNERID']= '';
+			$_userArr['APPNAME']= '';
+			$xuserInfo=$user->getUserAllInfoXml('getUserRelateInfo',$_userArr);
+			$xmlProcess = new ProcessBusinessXml();
+			$userAllInfoArr= $xmlProcess->dealReturnXml($xuserInfo,'node','message');
+
+			if(count($userAllInfoArr)>1) $msg='4';
+			$userAllInfo = base64_decode($userAllInfoArr[0]);
+			$userRelateInfoArr= Util::resolveXmlMessage($userAllInfo);
+			$userRelateInfoArr['PASSWORD']=$password;
+			$_SESSION['userRelateInfo']=$userRelateInfoArr;
+			$_SESSION['userAllInfo']=$userAllInfo;
+
+			//从业主体
+			//userRegisterApp
+			$_regiArr['LOGIN_ID']= iconv('utf-8','gbk',$username);
+			$_regiArr['PASSWORD']= $password;
+			$_regiArr['USERINFO']= $_SESSION['userAllInfo'];
+			$regiAppRtS=$user->getUserAllInfoXml('userRegisterApp',$_regiArr);
+			$regiAppInfoArr= $xmlProcess->dealReturnXml($regiAppRtS,'node','message');
+			$regiAppInfo = base64_decode($regiAppInfoArr[0]);
+			$_SESSION['APPSERVERREGIONCODE']=$regiAppInfo;
+			//调用doGetRegionCodeConfig方法
+			$_regioncodeArr['LOGIN_ID']=iconv('utf-8','gbk',$username);
+			$_regioncodeArr['USBREGIONCODE']='';
+			$_regioncodeArr['APPSERVERREGIONCODE']=$regiAppInfo;
+			$regionCodeS = $user->getUserAllInfoXml('doGetRegionCodeConfig',$_regioncodeArr);
+			$regionCodeArr= $xmlProcess->dealReturnXml($regionCodeS,'node','message');
+			$regionCodeInfo = base64_decode($regionCodeArr[0]);
+			$_SESSION['REGIONCODE']=$regionCodeInfo;
+			$regionCodeInfoArr=Util::resolveXmlMessage($regionCodeInfo);
+			$_SESSION['REGIONCODEARR']=$regionCodeInfoArr;
+			//调用doRegisterRegionCode方法
+			$_regiRegionCodeArr['LOGIN_ID']= iconv('utf-8','gbk',$username);
+			$_regiRegionCodeArr['REGIONCODE']= $regionCodeInfo;
+			$regiRegionCodeS = $user->getUserAllInfoXml('doRegisterRegionCode',$_regiRegionCodeArr);
+			$regiRegionCodeArr= $xmlProcess->dealReturnXml($regiRegionCodeS,'node','message');
+			$regiRegionCodeInfo = base64_decode($regiRegionCodeArr[0]);
+
+			
+			$regionInfo = explode(",",$_SESSION['REGIONCODEARR']['CANREADREGIONCODE']);
+			if(count($regionInfo) > 1){
+				$_SESSION['ISCHKREGION'] = true;
+			}else{
+
+				$_SESSION['ISCHKREGION'] = false;
+			}
+			$_SESSION["region"] = isset($regionInfo[0])?$regionInfo[0]:"510101";
+			$temp = isset($_SESSION["_role_"])?$_SESSION["_role_"]:"";
+	    	$temp = explode(",",$temp) ;
+	    	$role = "";
+	    	foreach($temp as $key=>$itme){
+	    		$role[]=explode("_",$itme);
+	    	}
+	    	$_SESSION["role"]=$role;
+			if(!$regiRegionCodeInfo){
+				$msg = "3";
+			}else{
+				$msg = "1";
+			}
+		}else{
+			$msg = "2";
+		}
+		//msg = 1:成功 2:失败 3:无权限 4:信息出现多条 5请插key 6您所插入的key信息与登录用户不符合，请确认
+		$msgs['status'] = $msg;
+		echo json_encode($msgs);
+	}
+		/* 退出系统 */
+	public function logout()
+	{
+		session_destroy();//删除服务器端的session文件
+		//setcookie(session_name(),'',time()-3600,'/');//删除本地相关联的cookie
+		session_unset();//清空内存中的cookie或者是$_SESSION = array();
+		//
+		Util::redirect('/userlogin');
+		//header("Location: /index/index.html");
+	}
+	
+	private function getProRole($rolelist,$ismethod = false){ 
+		$tmp = array();
+		foreach ($rolelist as $k=>$v){
+			$tmp['mod'][$k] = $ismethod ? ( !empty($v['METHOD'])&&$v['METHOD']!='index' ? $v['MODULE'].'/'.$v['METHOD'] : $v['MODULE'])  : $v['APPNAME'];
+            $tmp['name'][$k] = $v['RIGHT_NAME'] ;
+		}
+		return $tmp;
+	}
+
+
+	public function modifyPwd(){
+		$this->assign('moduleList',$moduleList);
+        $this->assign('header',  "修改密码");
+        $this->display('index','modifypwd');		
+	}
+
+	public function confirmpwd(){
+		$base64 = new base64();		
+		if($_POST)
+		{			
+			$oldpwd = $base64->deCrypt($_SESSION["userRelateInfo"]["PASSWORD"]);			
+			if(trim($oldpwd) != trim($_POST["oldpwd"])){			
+				$result['code'] = '2';			
+				$result['msg'] = '警告: 原始密码输入错误！';
+			}else{
+				$userid = $_SESSION["userRelateInfo"]["USER_ID"];
+				$pwd1 = $_POST["newpwd"];
+				$pwd2 = $_POST["cfrpwd"];
+				if($pwd1 != $pwd2){			
+					$result['code'] = '2';			
+					$result['msg'] = '警告: 新密码两次输入不符合!';
+				}else {
+					$pwd = $base64->enCrypt($pwd1);
+					$params = array("ID"=>$userid,"PASSWORD"=>$pwd,"FLAG"=>$_SESSION["userRelateInfo"]["FLAG"]);
+					$params['ACTION'] = 'none';
+					$params['MAINTABLE'] = 'SYSTEM@CYUSERS';
+					$params['SUBTABLE'] = array(
+						'SYSTEM@CYUSERS' =>array('PK'=>'ID')
+					);
+					$vresult = $this->prosoap->doSaveInfo('BBizCYPersons',$params);
+					if(!$vresult){
+						$result['code'] = '2';			
+						$result['msg'] = $this->prosoap->erromsg;					
+					}else{
+						$result['code'] = '1';			
+						$result['msg'] = '';						
+					}
+				}
+			}
+		}
+		
+		echo json_encode($result);
+	}
+}

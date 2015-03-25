@@ -1,0 +1,1304 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>mxGraph User Manual - JavaScript Client</title>
+	<link rel="stylesheet" href="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/html.css" charset="utf-8" type="text/css">
+    <script type="text/javascript" src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/toc.js"></script>
+</head>
+<body onload="maketoc(document.getElementById('toc'));">
+<h1>mxGraph 用户手册 – JavaScript客户端</h1>
+<br>
+<br>
+<p>mxGraph版本1.10.2.0 – 2012.7.20</p>
+<p>版权所有JGraph Ltd 2006-2012</p>
+<br>
+<p>本出版物作者保留所有权利。未经作者书面许可，本出版物的任何部分不可以被复制、存储在检索系统中，
+  不得以任何形式或任何手段进行电子、机械、影印、录制或其他方式传输。</p>
+<p>在本出版物中的所有程序因其教学价值而被纳入。测试人员已经通过仔细地测试，但不能担保可以用于任何特定用途。
+  出版商不提供任何保证或陈述，也不承担任何责任。</p>
+<p>只有拥有JGraph有限公司有效的书面许可，才可以拥有使用或复制本出版物中所述的软件的权利。</p>
+<p>JGraph有限公司或其员工不对本出版物中可能出现的任何错误负责。本出版物中的信息如有更改，恕不另行通知。</p>
+<p>Java及基于Java的所有标志是Sun Microsystems公司在美国和其他国家的商标或注册商标。</p>
+
+<br>
+<h1>目录</h1>
+<div id="toc"><ul style="list-style-type: none;"><li style="padding-left: 0px;"><a href="#1">1 简介</a></li><li style="padding-left: 30px;"><a href="#1.1">1.1 产品线介绍</a></li><li style="padding-left: 30px;"><a href="#1.2">1.2 使用哪个版本的mxGraph？</a></li><li style="padding-left: 60px;"><a href="#1.2.1">1.2.1 JavaScript</a></li><li style="padding-left: 30px;"><a href="#1.3">1.3 mxGraph – JavaScript库</a></li><li style="padding-left: 30px;"><a href="#1.4">1.4 mxGraph可以被用在什么样的产品上？</a></li><li style="padding-left: 30px;"><a href="#1.5">1.5 怎样部署mxGraph？</a></li><li style="padding-left: 30px;"><a href="#1.6">1.6 mxGraph的技术</a></li><li style="padding-left: 30px;"><a href="#1.7">1.7 mxGraph授权</a></li><li style="padding-left: 30px;"><a href="#1.8">1.8 图形是什么?</a></li><li style="padding-left: 60px;"><a href="#1.8.1">1.8.1 图形的可视化</a></li><li style="padding-left: 60px;"><a href="#1.8.2">1.8.2 图形的交互</a></li><li style="padding-left: 60px;"><a href="#1.8.3">1.8.3 图像的布局</a></li><li style="padding-left: 60px;"><a href="#1.8.4">1.8.4 图形的分析</a></li><li style="padding-left: 30px;"><a href="#1.9">1.9 关于本手册</a></li><li style="padding-left: 60px;"><a href="#1.9.1">1.9.1 mxGraph先决条件</a></li><li style="padding-left: 60px;"><a href="#1.9.2">1.9.2 获得更多帮助</a></li><li style="padding-left: 0px;"><a href="#2">2 让我们开始</a></li><li style="padding-left: 30px;"><a href="#2.1">2.1 mxGraph网站</a></li><li style="padding-left: 60px;"><a href="#2.1.1">2.1.1 取得mxGraph</a></li><li style="padding-left: 60px;"><a href="#2.1.2">2.1.2 安装mxGraph</a></li><li style="padding-left: 60px;"><a href="#2.1.3">2.1.3 项目结果及创建选项</a></li><li style="padding-left: 30px;"><a href="#2.2">2.2 JavaScript及Web应用</a></li><li style="padding-left: 60px;"><a href="#2.2.1">2.2.1 AJAX</a></li><li style="padding-left: 60px;"><a href="#2.2.2">2.2.2 第三方JavaScript架构</a></li><li style="padding-left: 90px;"><a href="#2.2.2.1">2.2.2.1 谷歌网页工具包</a></li><li style="padding-left: 90px;"><a href="#2.2.2.2">2.2.2.2 原生JavaScript构架及工具库</a></li><li style="padding-left: 90px;"><a href="#2.2.2.3">2.2.2.3 mxGraph与其他JavaScript构架的集成</a></li><li style="padding-left: 90px;"><a href="#2.2.2.4">2.2.2.4 mxGraph的JavaScript扩展</a></li><li style="padding-left: 60px;"><a href="#2.2.3">2.2.3 JavaScript的开发综述</a></li><li style="padding-left: 90px;"><a href="#2.2.3.1">2.2.3.1 JavaScript开发环境</a></li><li style="padding-left: 90px;"><a href="#2.2.3.2">2.2.3.2 调试JavaScript</a></li><li style="padding-left: 90px;"><a href="#2.2.3.3">2.2.3.3 JavaScript的混淆</a></li><li style="padding-left: 90px;"><a href="#2.2.3.4">2.2.3.4 命名空间</a></li><li style="padding-left: 30px;"><a href="#2.3">2.3 Hello World!</a></li><li style="padding-left: 30px;"><a href="#2.4">2.4 mxGraph部署和调试</a></li><li style="padding-left: 0px;"><a href="#3">3 mxGraph模型和单元</a></li><li style="padding-left: 30px;"><a href="#3.1">3.1 mxGraph的核心架构</a></li><li style="padding-left: 60px;"><a href="#3.1.1">3.1.1 mxGraph的模型</a></li><li style="padding-left: 60px;"><a href="#3.1.2">3.1.2 事务模型</a></li><li style="padding-left: 90px;"><a href="#3.1.2.1">3.1.2.1 模型改变的方法</a></li><li style="padding-left: 60px;"><a href="#3.1.3">3.1.3 mxCell</a></li><li style="padding-left: 90px;"><a href="#3.1.3.1">3.1.3.1 样式</a></li><li style="padding-left: 90px;"><a href="#3.1.3.2">3.1.3.2 几何</a></li><li style="padding-left: 90px;"><a href="#3.1.3.3">3.1.3.3 用户对象</a></li><li style="padding-left: 90px;"><a href="#3.1.3.4">3.1.3.4 单元类型</a></li><li style="padding-left: 60px;"><a href="#3.1.4">3.1.4 组结构</a></li><li style="padding-left: 60px;"><a href="#3.1.5">3.1.5 复杂度管理</a></li><li style="padding-left: 90px;"><a href="#3.1.5.1">3.1.5.1 折叠</a></li><li style="padding-left: 90px;"><a href="#3.1.5.2">3.1.5.2 子图、下钻/递升</a></li><li style="padding-left: 90px;"><a href="#3.1.5.3">3.1.5.3 分层和过滤</a></li></ul></div>
+
+<br>
+<h1><a name="Introduction"></a><a name="1">1 </a>简介</h1>
+<h2><a name="mxGraph_Products"></a><a name="1.1">1.1 </a>产品线介绍</h2>
+
+<p>mxGraph是一系列以不同技术开发的工具库，旨在提供显示交互式的
+  <a href="http://en.wikipedia.org/wiki/Diagram">图表</a>和图形的应用程序的功能。
+  请注意，对于图形，我们是指<a href="http://en.wikipedia.org/wiki/Graph_%28mathematics%29">数学图形</a>，
+  不一定单单指<a href="http://en.wikipedia.org/wiki/Charts">图表</a>
+  （虽然有些图形是图表）。参见后面的章节：“什么是图形？”的细节描述。</p>
+
+<p>作为一个开发库，mxGraph没有专门提供了一个现成的可以使用的应用程序，
+  尽管其中的许多例子都接近可以直接使用。 mxGraph提供mxGraph样式的
+  所有通常所需的绘画功能，互动及关联的图表显示环境。 mxGraph自带有许多例子，
+  它们有助于解释每种技术是如何被放在一起组成一个基本的应用程序，并展示这个
+  工具库的各项功能。</p>
+
+<p>每本用户手册是针对某种特定的技术，都具有通用的部分，如简介和布局。开发人员会发现，对于
+  在不同的技术实现，在产品范围内的每个工具库都共享相同的架构和API。对于特定的技术领域，
+  事件处理和渲染的实现略有不同，但是从一个技术平台整体移植到另一个平台，mxGraph提供了
+  尽可能多的通用的接口。</p>
+
+<p>开发人员在集成此工具库到他们自己的应用程序前，需要应该阅读的使用技术的先决条件。
+  参见下面的“先决条件”一节。鉴于mxGraph是您的应用程序的组成部分，你必须了解应用程序
+  使用的技术，以及如何使用该技术进行编程。</p>
+
+<h2><a name="Which_Version"></a><a name="1.2">1.2 </a>使用哪个版本的mxGraph？</h2>
+
+<p>当决定使用mxGraph的哪种技术实现，通常是根据应用的技术实现来决定。</p>
+
+<p>Java可视化版本适用于创建高性能的桌面应用程序的。 以网络为中心的JavaScript实现版本，
+  主要用在所有的工作于网页浏览器本身的应用。这样的应用程序的一个例子是业务流程建模工具，
+  让用户在浏览器中绘制过程，集中存储，并允许其他用户查看和编辑流程，并自动在服务器上执行
+  与可视化相关联的业务流程。</p>
+
+<h3><a name="JavaScript"></a><a name="1.2.1">1.2.1 </a>JavaScript</h3>
+
+<p>JavaScript版本的mxGraph主要包括一个包含所有的mxGraph功能的JavaScript文件。
+  这是一个有加载JavaScript部分的HTML网页，在浏览器中的HTML容器中执行。这种结构
+  令人难以置信地简单，只需要一个可以伺服HTML页面的Web服务器服务和一个可以执行
+  JavaScript的Web浏览器。</p>
+
+<p>主要技术优势：</p>
+<ul>
+	<li>不需要第三方插件。不需要依赖插件提供商。</li>
+	<li>涉及的技术是开放的，有很多开放的实现，可以去除任何厂商，而不影响您的应用程序的应用。</li>
+	<li>标准化的技术，这意味着您的应用程序可以轻松部署到最大数量的浏览器用户，而不需要在用户端的
+    电脑进行额外的配置或安装。大型企业环境中，往往不允许个人安装浏览器插件和改变共有的标准配置。</li>
+</ul>
+
+<p>主要技术劣势：</p>
+<ul>
+	<li>渲染速度。当用户屏幕上可见的单元数量攀升到数百时，在大多数浏览器上重绘减缓到超出可接受的水平。
+    在信息管理理论中，同时显示数百个单元通常是不正确的，因为用户无法一下子理解这么多的数据。有几种方法，
+    我们统称为复杂性管理机制，可以用来限制信息的数量，达到合理水平，从而保持可接受的重绘率。
+    复杂性管理在本用户手册后面的章节中有详细描述。</li>
+</ul>
+
+<p>对于您的应用需求，通过比较每个实现的优点和缺点，选择能为您的应用提供最明确优势的那项技术。</p>
+
+<h2><a name="JavaScript_Library"></a><a name="1.3">1.3 </a>mxGraph – JavaScript库</h2>
+
+<p>本用户手册是mxGraph的JavaScript库的版本，使您能够创建跨所有主要浏览器，
+  具有交互式绘图功能的Web应用程序，而无需第三方插件。核心mxGraph客户端功能是
+  一个JavaScript库，通过浏览器与您的图表显示和交互，提供通常所需的所有应用程序
+  功能以及方便添加自定义功能的高扩展性。 mxGraph是专为使用客户端 - 服务器架构而设计，
+  其中的JavaScript库负责与服务器通信交流以及更新图表的状态信息。</p>
+
+<div id="note">
+<p>注意：从现在开始，除非特别声明，<strong>mxGraph</strong>会被用来描述JavaScript客户端以及后台支撑模块，
+  而不是指这个产品。</p>
+</div>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_architecture.png" name="mxgraph_architecture">
+<br>
+<em>mxGraph组件间的关系</em></p>
+
+<h2><a name="mxgraph_applications"></a><a name="1.4">1.4 </a>mxGraph可以被用在什么样的产品上？</h2>
+
+<p>图形可视化库的应用实例包括：过程图、工作流和BPM的可视化图表、流程图、交通或水流量、
+  数据库和WWW的可视化、网络和电信显示、映射应用和地理信息系统、UML图、电子线路、金融、
+  超大规模集成电路和社会网络、数据挖掘、生化、生态循环、实体和因果关系和组织图表。</p>
+
+<h2><a name="mxgraph_deployment"></a><a name="1.5">1.5 </a>怎样部署mxGraph？</h2>
+
+<p>在典型的瘦客户端环境中，mxGraph分为在客户端的JavaScript库和在服务器端两种支持的语言之一的.NET或Java库。
+  JavaScript库作为一个更大的基于浏览器的web应用程序的一部分，被一个标准web服务器分发到浏览器。所有的浏览器
+  需要开启JavaScript能力才能运行这个应用。</p>
+
+<p>在本手册的第三部分，您会看到一个嵌入了mxGraph库的HTML页面，以及一个简单的调用了库功能的应用程序。</p>
+
+<h2><a name="mxgraph_technologies"></a><a name="1.6">1.6 </a>mxGraph的技术</h2>
+
+<p>mxGraph使用在浏览器上的客户端的JavaScript功能。而在JavaScript代码层面上，在浏览器中使用了基本的矢量图形语言来显示图形，
+  （对于大多数符合标准的浏览器使用SVG技术，而在IE中使用了的VML技术）。 mxGraph还包括完全只使用HTML来呈现的功能，
+  这会限制可以使用的功能范围，但可用于较简单的图表。</p>
+
+<p>作为一名开发人员，您并不是被限制在浏览器相关的特定功能。如前所述，浏览器不同，所使用的矢量图形语言也不同，
+  所以mxGraph的功能被抽象成一个共同的类。同样，浏览器对于事件处理和DOM，两大浏览器实施的功能也不尽相同。然而，
+  mxGraph通过使用恒定的API来适用于所有浏览器，掩藏不同浏览器间的内在差异。</p>
+
+<h2><a name="mxgraph_licensing"></a><a name="1.7">1.7 </a>mxGraph授权</h2>
+
+<p>mxGraph的JavaScript库可以有以下两种授权方式：</p>
+
+<ul>
+	<li>标准的商业授权，在网站上的定价适用于这些商业授权。</li>
+	<li>合理使用托管模式。访问的托管版本需要一个密钥，在试用版中的示例中可以找到。</li>
+</ul>
+
+<p>请注意这两个许可证禁止你作为开发人员分发mxGraph源代码，以及您应用程序中压缩的mxClient.js文件。
+这意味着，mxGraph许可证不兼容某些开源或免费软件许可证。也不允许使得格式化源代码在互联网上公开可见。</p>
+
+<p>对于详细的授权问题，我们建议您咨询法律专业人士。</p>
+
+<h2><a name="what_graph"></a><a name="1.8">1.8 </a>图形是什么?</h2>
+
+<p>图形可视化是建立于网络、图论的数学理论基础上。如果您正在查找JavaScript的<em>条形图</em>、
+<em>饼图</em>、<em>甘特图</em>, 可以参考<a href="http://code.google.com/apis/chart/">谷歌图表</a>项目，或类似的信息</p>
+
+<p>一个图是由顶点，也称为节点，以及边（节点之间的连接线）组成
+。图论中没有定义图究竟如何来视觉呈现。本手册中术语<em>图元</em>
+用来描述图形的构成元素，无论是边，顶点或图元组。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_simple_graph.png"><br>
+<em>A simple Graph</em></p>
+<em>一个简单点图形</em><p></p>
+<br>
+
+<p>图论中有些额外的定义，为图形处理提供
+有用的背景，如果您感兴趣的话，它们都列在附录中。</p>
+
+<h3><a name="graph_visualization"></a><a name="1.8.1">1.8.1 </a>图形的可视化</h3>
+
+<p>可视化是创建一个有用的图形可视化展现的过程。可视化功能的范围是
+mxGraphs的主要力量之一。 mxGraph支持范围广泛的功能，使图元显示仅限于
+开发人员的技术和平台可用的功能。顶点可以是图形、图像、矢量绘图、动画以及几乎所有可以在浏览器中
+操作的图形。您也可以在顶点和边使用HTML标记。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_graph_vis.png"><br>
+<em>交通系统的可视化图。 (c) Tourizm Maps
+2003, http://www.world-maps.co.uk</em></p>
+<br>
+
+<h3><a name="graph_interaction"></a><a name="1.8.2">1.8.2 </a>图形的交互</h3>
+
+<p>交互是指在一个使用mxGraph的应用程序中，通过WEB应用程序的GUI改变图形模式。
+mxGraph支持拖动、复制图元、重新调整大小、重新构造，连接和断开，从外部源的拖放和删除，编辑图元
+标签中的位置等等。 mxGraph的主要好处之一是通过编程来实现互动的灵活性。</p>
+
+<p>许多复杂的图形化Web应用程序依赖于与服务器往返的通讯来显示图形，不仅是基本的显示，还包括
+交互事件。虽然这就是通常所谓的AJAX功能，这种服务器的依赖对交互事件是不合适的。
+视觉反馈时间超过0.2秒在应用程序中一般严重影响了实用性。mxGraph把所有的交互事件都放置
+在客户端，提供了真实感觉的应用程序，而不像一个哑巴的远程终端。它还提供了脱机使用的可能性。
+</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_graph_interaction.png"><br>
+<em>通过鼠标拖动选择一个区域时显示选择底纹</em></p>
+<br>
+
+<h3><a name="graph_layouts"></a><a name="1.8.3">1.8.3 </a>图像的布局</h3>
+
+<p>图形图元可以布置在一个简单的应用程序的任何地方，包括在彼此顶部。
+某些应用程序需要按照一般或特殊的顺序结构来显示出示信息。
+这可能涉及到确保图元不重叠和至少彼此间留有一定的距离，或出现在相对于其他图元的一个相对
+位置，图元通常是通过边来连接。这个活动，被称为布局的应用，可以
+通过多种方式，来协助用户设置自己的图形。
+对于非编辑图形，布局应用是对图元进行布局算法的过程。
+对于交互式的图形，即那些可以通过用户界面进行编辑，布局应用可能只
+允许用户对特定的图元进行特定位置的修改，对每个修改重新布局，或
+编辑完成后，重新布局。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_graph_layout.png"><br>
+<em>使用水平分层的流程布局</em></p>
+
+<p>mxGraph支持树、流向和层次的布局，来满足大多数布局的需求。后面的章节中会讲述
+更多布局的信息。</p>
+
+<p>在客户端－服务器架构中运行布局可以有两个选项。JavaScript版提供了完全在客户端
+布局的能力，如果需要的话，同样的布局在服务器端的Java实现可以选择卸载一些服务器的处理。</p>
+
+<h3><a name="graph_analysis"></a><a name="1.8.4">1.8.4 </a>图形的分析</h3>
+
+<p>图形分析涉及到确定有关的图形结构的某些细节算法的应用，例如，
+确定所有路径或两个图元之间的最短路径。有些更复杂的图形分析算法，往往被应用于
+指定域的任务。有些技术，如聚合、分解、优化等趋向某些针对性的科学领域的，目前包含在核心的mxGraph包中。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_graph_analysis.jpg" name="shortest_path_analyis"><br>
+<em>最短路径分析</em></p>
+<br>
+
+<h2><a name="about_manual"></a><a name="1.9">1.9 </a>关于本手册</h2>
+
+<h3><a name="pre_requisites"></a><a name="1.9.1">1.9.1 </a>mxGraph先决条件</h3>
+
+<p>为了充分受益于本手册，您需要合理的理解Web应用以及将要部署使用的服务器技术。
+部署的例子可以在每个服务器技术支持得到，熟悉该服务器的技术显然是必需的。</p>
+
+<p>对于修改描述显示和行为方面的编辑器的配置文件，基本的XML知识是有用的。
+您需要理解和执行JavaScript编码，
+并熟悉面向对象编程原理和现代软件设计。</p>
+
+<p>您不需要底层的浏览器使用的矢量图形的知识，如SVG，VML或HTML画布的语言。
+  mxGraph将可视化组件的说明抽象成一个API。</p>
+
+<h3><a name="Getting_help"></a><a name="1.9.2">1.9.2 </a>获得更多帮助</h3>
+
+<p>有许多机制可以获得使用mxGraph软件的帮助。<a href="http://forum.mxgraph.cn/" name="JGraph Community Forum">社区帮助论坛</a>
+为mxGraph用户提供无偿援助。论坛结合许多用户来回答问题的优势，
+以及活跃的mxGraph开发人员的指导，确保质量和反应的正确性，以及对尽可能多的问题的回答。
+然而，不保证能够得到无偿援助，或者答案的正确性，或完美的答案。
+如果您的问题比较罕见，开发者不大会花时间来分析您的问题，
+请尝试将一个问题分解成几个简单的问题，并提供尽可能多的信息和例子</p>
+
+
+<p>当在论坛发帖时，遵循<a href="http://forum.jgraph.com/questions/8/how-to-post-mxgraph-questions">发帖守则
+</a>会帮助您得到更好的回答和鼓励更多人帮助你。如果你是付费用户，请使用你的支付邮件中提到的方法获取支持。</p>
+<br>
+
+<h1><a name="Getting_Started"></a><a name="2">2 </a>让我们开始</h1>
+
+<h2><a name="mxgraph_site"></a><a name="2.1">2.1 </a>mxGraph网站</h2>
+
+<p>让我们从<a href="http://www.mxgraph.cn/mxgraph.php">mxGraph网站</a>开始。
+  如何开始的最有用的信息罗列在下面。用顶部和底部的导航条定位相关部分：</p>
+<ul>
+	<li><a href="http://forum.mxgraph.cn/">论坛</a> - Here
+    论坛 - 在这里，您可以向JGraph的社区提出您的问题。虽然不能保证回答的及时性和正确性，
+    但JGraph开发者们会对发布的问题保持密切关注。尽量把您的问题分割成小而单一的问题。
+    如果您要求有人为开发一个项目，你是不可能得到答复的。如果您需要商业级的支持，
+    请联系support@jgraph.com。在张贴问题到论坛前，请搜索现在的文档，常见问题列表，
+    并使用论坛提供的搜索工具搜索论坛。 JGraph的团队花了很大的努力把这些资源放在相应的地方，
+    请不要因为您还没有自己先搜查一下，而浪费他们的时间。请正确使用标签，“mxgraph“是这个产品，
+    ”错误“是指报告的错误，”功能“是指功能要求，等等。</li>
+</ul>
+
+<h3><a name="obtaining_mxgraph"></a><a name="2.1.1">2.1.1 </a>取得mxGraph</h3>
+
+<p>要取得mxGraph：</p>
+
+<p>请联系我们的中国独家代理--<a href="http://www.ozintel.cn/mxgraph">成都奥知智能软件有限责任公司</a></p>
+
+<h3><a name="Installing_the_JGraph_Suite"></a><a name="2.1.2">2.1.2 </a>安装mxGraph</h3>
+
+<p>mxGraph是以zip文件格式发布。将文件解压到您希望的路径，一个名为mxGraph
+  的文件夹会被创建，这个文件夹就是mxGraph的安装根路径。</p>
+
+<h3><a name="project_structure"></a><a name="2.1.3">2.1.3 </a>项目结果及创建选项</h3>
+
+<p>一但解压，在根目录下有一系列的文件及文件夹</p>
+
+<table width="642" border="1" bordercolor="#000000" cellpadding="4" cellspacing="0">
+	<colgroup><col width="165">
+	<col width="459">
+	</colgroup><thead>
+		<tr valign="TOP">
+			<td width="165">
+			<p>/doc</p>
+			</td>
+			<td width="459">
+			<p>文档根目录，保持此用户手册</p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr valign="TOP">
+			<td width="165">
+			<p>/dotnet</p>
+			</td>
+			<td width="459">
+			<p>.NET服务器端代码</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td width="165">
+			<p>/java</p>
+			</td>
+			<td width="459">
+			<p>Java服务器端代码</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td width="165">
+			<p>/javascript</p>
+			</td>
+			<td width="459">
+			<p>JavaScript客户端功能</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td width="165">
+			<p>/javascript/examples</p>
+			</td>
+			<td width="459">
+			<p>mxGraph的HTML演示例子</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td width="165">
+			<p>更新记录</p>
+			</td>
+			<td width="459">
+			<p>发布版本间的详细差别</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td width="165">
+			<p>index.html</p>
+			</td>
+			<td width="459">
+			<p>开发库的基础介绍</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td width="165">
+			<p>license.pdf</p>
+			</td>
+			<td width="459">
+			<p>使用开发库的授权许可</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><em>项目目录结构表</em></p>
+<br>
+
+<h2><a name="web_applications"></a><a name="2.2">2.2 </a>JavaScript及Web应用</h2>
+
+<p>
+  Web应用程序，特别是在网页浏览器中使用JavaScript来试图效仿桌面应用程序，
+  仍然是一个相对较新的软件工程领域。障碍JavaScript生产出高质量应用的主要
+  有三个问题：性能，缺乏原生性的桌面应用程序功能以及浏览器之间API的不一致性。
+</p>
+
+<p>
+  相当大的努力已经被投入来开发框架库，以解决功能和API这两个问题。许多的开发库
+  的设计需求就是由同时改善网站的设计和可用性，以及协助我们完成一般的应用功能
+  （如菜单、窗口、对话框、持久性、事件处理等）的要求来驱动的。他们同时也提供了
+  某些在JavaScript中找不到的基本功能，如基本的数学和集合功能，而这些功能在桌面
+  的应用程序开发中是与生俱来的。
+</p>
+
+<p>
+  许多这些JavaScript框架，通过原生支持或作为一个插件的支持，可以用时下流行IDE来开发，
+  并支持所有的主流包含JavaScript调试器的浏览器。JavaScript没有编译过程（它是一种解释语言），
+  因此，除非您的IDE具有语法检查工具，打字错误通常只能在运行时刻才可以被捕获。因此，世上没有
+  一个能够包罗万象的工具包，您往往需要使用好几个厂商的独立组件，才能提供你开发JavaScript
+  应用所需要的工具库。
+</p>
+
+<h3><a name="ajax"></a><a name="2.2.1">2.2.1 </a>AJAX</h3>
+
+<p><a href="http://en.wikipedia.org/wiki/AJAX">AJAX</a>
+  是一个很时髦而应用广泛的名词，它使JavaScript应用程序听起来更现代。对AJAX最初的想法是使
+  客户端浏览器不用循环等待与服务器通信的响应。严格地说，mxGraph的基本运作并不涉及到AJAX。
+  所有的互动和模型的转变都只在JavaScript客户端中完成。</p>
+
+<p>另一种实现了交互图形，采用了AJAX方法，但是，会有讨厌的AJAX术语来显示解决方案在技术上更先进。
+  需要回到服务器才能交互变化，有时会导致更新界面的严重延误，而往往使应用程序无法使用。</p>
+
+<h3><a name="js_frameworks"></a><a name="2.2.2">2.2.2 </a>第三方JavaScript架构</h3>
+
+<h4><a name="GWT"></a><a name="2.2.2.1">2.2.2.1 </a>谷歌网页工具包</h4>
+
+<p>鉴于明显的复杂性，对于桌面应用开发人员的来说，最常用的方法是使用<a href="http://code.google.com/webtoolkit/">谷歌网页工具包（GWT）</a>。
+  通过把Java翻译成JavaScript，GWT提供了Web应用程序所需的许多常用功能。
+  生成的JavaScript可以像原生的JavaScript一样部署。 GWT还提供了JavaScript的混淆选项。
+  （见本章稍后混淆的部分）。</p>
+
+<p>GWT的关键优势：</p>
+
+<ul>
+	<li>可以重用Java开发人员的知识，</li>
+	<li>允许调试Java的源代码，</li>
+	<li>可以解决跨浏览器的问题，</li>
+	<li>可以实现本地代码与Java交互，</li>
+	<li>在执行之前，可以检测某些编译时错误。</li>
+</ul>
+
+<p>GWT的主要缺点：</p>
+
+<ul>
+	<li>从开发商得不到商业支持，</li>
+	<li>对架构的功能以及在调试问题时，层次越高，越难以实施，</li>
+	<li>对它的使用可能会阻止学习和理解JavaScript，而这却是实现一些新的特点所必须的。</li>
+</ul>
+
+<p>总之，可以把GWT当成简单的项目，但要注意把不要把它当成一种避免正确学习JavaScript的借口。</p>
+
+<h4><a name="native_js_frameworks"></a><a name="2.2.2.2">2.2.2.2 </a>原生JavaScript构架及工具库</h4>
+
+<p>为了不用列表和比较每一个JavaScript框架，请参阅维基百科的条目
+  <a href="http://en.wikipedia.org/wiki/List_of_JavaScript_libraries#JavaScript">Web应用程序框架</a>
+  和<a href="http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks">JavaScript的比较</a>。
+  这个比较表不能被认为是最权威的，而更象说明提供的功能类型，如提供事件处理、动画、小工具、支持AJAX请求等。
+  <a href="http://javascriptlibraries.com/">这个网站</a>也是一个有用的JavaScript库名单，大多是基于开放/免费源许可。
+</p>
+
+<p>请注意，很多框架添加了隐式的行为，使JavaScript的更像是一个面向对象的语言，
+  并增加了语言的基本功能。在写作的的布局mxGraph部分时，我们发现，这种隐含的行为
+  使得调试一个例子变得非常困难。在选择一个框架时，请留意它引入的隐式的行为，是否
+  会导致任何问题。
+</p>
+
+<p>当选择了一个框架和/或工具库时，考虑您会被绑定的某些特定功能，并寻找那些不同的，可以提供所需功能如动画，
+  独立的模块，而无需在总体设计上被绑定。
+</p>
+
+<h4><a name="integration_js_frameworks"></a><a name="2.2.2.3">2.2.2.3 </a>mxGraph与其他JavaScript构架的集成</h4>
+
+<p>这个部分经常被误解，简单来讲，并不需要<em>集成</em>。 Web应用程序一般包括一个或多个
+  <a href="http://en.wikipedia.org/wiki/Span_and_div"><em>div</em></a>元素，
+  可以被HTML用来放置包装应用程序的JavaScript。如果您创建一个div作为mxGraph的容器，
+  这就是一个可以为mxGraph应用程序的独立显示。它可以与任何后端服务器通信本身，而并不依赖与
+  这个div和页面的其余部分，除了它们各自占的地方。这包括事件处理，mxGraph可以处理其容器的事件，
+  即便网页的其余部分用一个完全不同的事件模型。只要mxGraph和页面上的其他库和框架不引入会打破
+  一个页面作为整体的隐式行为，客户端集成的问题根本就不需要考虑。</p>
+
+<p>与mxGraph服务器端集成，我们会在后面的章节阐述。</p>
+
+<h4><a name="extending_mxgraph"></a><a name="2.2.2.4">2.2.2.4 </a>mxGraph的JavaScript扩展</h4>
+
+<p>在JavaScript中，将语言结构映射面向对象范式有各种方式。mxGraph在整个项目中都使用一个特定的方法，
+  参见下面的默认规则：</p>
+
+<ul>
+	<li>不要更改内置的原型</li>
+	<li>不要试图限制JavaScript语言的力量</li>
+
+</ul>
+
+<p>在mxGraph中，有两种类型的“类”：<em>类classes</em>和<em>单例singletons</em>
+  （其中只有一个存在的类的实例）。单例被映射到全局对象而且变量名同类名是一样的。
+  例如，mxConstants是一个定义了所有常量字段的对象实例。普通类映射到一个构造函数和
+  定义了字段和方法的原型。例如，mxEditor是一个函数而mxEditor.prototype是mxEditor
+  函数创建对象时的原型。<em>mx</em>前缀是一种命名习惯，应用于mxGraph包中的所有类，以避免
+  与其他对象在全局命名空间发生冲突。</p>
+
+<p>为派生，父类必须提供一个构造函数，要么是无参数或者可以处理不带参数的调用。
+  此外，特殊的构造函数字段派生后的原型必须重新定义。例如，mxEditor派生于mxEventSource。
+  在JavaScript中，首先通过分配父类的一个实例到子类原型，来“继承”从父类的所有字段和方法：</p>
+
+<pre>mxEditor.prototype = new mxEventSource()</pre>
+
+<p>并定义构造函数字段：</p>
+
+<pre>mxEditor.prototype.constructor = mxEditor</pre>
+
+<p>后面的规则，使得可以通过使用构造函数的名称<em>mxUtils.getFunctionName(obj.constructor)</em>来检索对象的类型。</p>
+
+<h5><a name="constructor"></a>构造函数</h5>
+
+<p>在mxGraph中，对于派生的子类应采用相同的机制。例如，mxGraph的派生子类，首先，
+  新类的构造函数必须被定义。构造函数调用的父类的构造函数，需要显式传入<em>调用</em>的
+  mxGraph对象的每一个参数：</p>
+
+<pre>function MyGraph(container)
+{
+   mxGraph.call(this, container);
+}
+</pre>
+
+<p>MyGraph的原型从mxGraph如下继承。像往常一样，子类的构造函数在继承后被重新定义：</p>
+
+<pre>MyGraph.prototype = new mxGraph();
+MyGraph.prototype.constructor = MyGraph;</pre>
+
+<p>上面的代码（参见I / O部分手册）后，您可能希望定义的类相关联的编解码器。该代码将在类加载时执行，
+  并确保mxGraph和MyGraph的实例使用相同的编解码器编码。</p>
+
+<pre>var codec = mxCodecRegistry.getCodec(mxGraph);
+codec.template = new MyGraph();
+mxCodecRegistry.register(codec);
+</pre>
+
+<h5><a name="functions"></a>方法</h5>
+
+<p>在MyGraph的原型中，mxGraph的方法可如下扩展。</p>
+
+<pre>MyGraph.prototype.isSelectable = function(cell)
+{
+   var selectable = mxGraph.prototype.isSelectable.apply(this, arguments);
+   var geo = this.model.getGeometry(cell);
+   return selectable &amp;&amp;(geo == null || !geo.relative);
+}
+</pre>
+
+<p>在第一行中的supercall是可选的。这是通过传入<em>this</em>及<em>arguments</em>这个变量作为参赛，
+  <em>应用</em>到mxGraph原型的<em>isSelectable</em>这个方法上。父类的方法只有在不被覆盖的时候
+  才可能被调用，这也是JavaScript中另一种“继承”的方式。</p>
+
+<pre>mxGraph.prototype.isSelectable = function(cell)
+{
+   var geo = this.model.getGeometry(cell);
+   return selectable &amp;&amp; (geo == null || !geo.relative);
+}
+</pre>
+
+<p>如果方法的定义需要被完全覆盖，上述方案是有用的。</p>
+
+<p>为了增加新​​的方法和字段，可以使用如下代码。在下面的例子，示范了增加了一个返回图模型的XML的新方法：</p>
+
+<pre>MyGraph.prototype.getXml = function()
+{
+   var enc = new mxCodec();
+   return enc.encode(this.getModel());
+}
+</pre>
+
+<h5><a name="fields"></a>字段</h5>
+<p>新的字段通过如下方式申明和定义：</p>
+
+<pre>MyGraph.prototype.myField = ‘Hello, World!’;
+</pre>
+
+<p>需要注意的是myField的值只分配了一次，那就是说，所有MyGraph的实例共享相同的值。
+  如果您需要每个实例拥有自己的值，则该字段必须定义在构造函数中。例如：</p>
+
+<pre>function MyGraph(container)
+{
+   mxGraph.call(this, container);
+   this.myField = [];
+}
+</pre>
+
+<p>最后，新的MyGraph实例如果按以下方式创建，如果容器是一个DOM节点，这将是图形视图的容器：</p>
+
+<pre>var graph = new MyGraph(container);
+</pre>
+<br>
+
+<h3><a name="general_javascript"></a><a name="2.2.3">2.2.3 </a>JavaScript的开发综述</h3>
+
+<h4><a name="development_environments"></a><a name="2.2.3.1">2.2.3.1 </a>JavaScript开发环境</h4>
+<p>请参阅<a href="http://extjs.com/learn/Manual:Resources#IDEs">ExtJS用户手册</a>的相关内容。</p>
+
+<h4><a name="debugging_javascript"></a><a name="2.2.3.2">2.2.3.2 </a>调试JavaScript</h4>
+<p>请参阅<a href="http://en.wikipedia.org/wiki/JavaScript#Debugging">维基条目</a>，或<a href="http://extjs.com/learn/Manual:Resources#Various_debugging_tools">ExtJS</a>的相关内容。</p>
+
+<h4><a name="javascript_obfuscation"></a><a name="2.2.3.3">2.2.3.3 </a>JavaScript的混淆</h4>
+<p>默认情况下，当您发布JavaScript到浏览器客户端时，您发布完整的JavaScript源代码。
+  然后，JavaScript在浏览器上被解释并运行。在客户端上运行时，是不可能对JavaScript
+  进行任何程度的加密，因为JavaScript源代码必须被JavaScript解释器所理解，解释型语言
+  并没有一个二进制的中间形式。</p>
+
+<p>可以做到的是，在传输的过程中，将JavaScript加密，在客户端运行前解密，但客户端仍然能够访问解密后的源代码。</p>
+
+<p>我们不做混淆，因为方法的名称形成的公共的API和I/O，在通信的两端都需要理解这样的混淆。</p>
+
+<h4><a name="namespaces"></a><a name="2.2.3.4">2.2.3.4 </a>命名空间</h4>
+<p>命名空间的概念在JavaScript中并不存在，所以在创建新的类名称时要非常谨慎。
+  mxGraph中，所有的类都以“mx-”的前缀开始，以避免无意中冲突或覆盖掉原型。
+  在启动您的应用项目之前，是值得创建一个特定的与应用项目相关、人工“命名空间”
+  的前缀，应用到所有创建的类。</p>
+
+<br>
+<h2><a name="hello_world"></a><a name="2.3">2.3 </a>Hello World!</h2>
+<p>mxGraph中的Hello World，是一个简单的客户端的例子，显示了两个相连的“Hello”和“世界”的顶点标签。
+  这个例子演示了以下几件事：
+</p>
+
+<ul>
+	<li><strong>创建一个嵌入了mxGraph客户端JavaScript的HTML页面，</strong></li>
+	<li><strong>创建了一个容器来装载mxGraph，</strong></li>
+	<li><strong>在图形中加入了所需的元素。</strong></li>
+</ul>
+
+<p>这个例子的源代码，helloworld.html，可以在mxGraph的源代码的示例目录下找到。
+  在HTML源代码包含两个主要部分组成，头部和身体。建立一个基本的mxGraph
+  应用程序的模板应包含以下主要内容：</p>
+
+<ul>
+	<li><strong>mxBasePath</strong>：这是一个JavaScript变量，用来定义CSS，图片，
+    资源和js的使用的目录。它是一段JavaScript代码，并需要被放置在<em>脚本标记内</em>。
+    它必须在加载mxClient.js之前，而且不应该斜线。</li>
+
+	<li><strong>mxClient.js</strong>：这是mxGraph库的路径。如果HTML文件在本地执行，
+    路径可能是本地计算机路径或公共互联网的路径。如果HTML页面是从Web服务器上下载，这路径
+    通常是一个公共的因特网路径。</li>
+
+	<li><strong>创建容器</strong>：在body元素中底部的代码，被定义为加载项
+    的方法（onload事件），加载网页时会被调用。它通过在传递即下定义的一个div
+    容器作为参数。mxGraph组件将被放置在这个div容器中。在此示例中网格被添加作为背景，
+    这在图表应用程序中经常用到。在容器创建时，其他视觉效果或者其他的背景和以及容器的
+    宽度和高度都没有定义。
+
+	<p>注意，如果您想不出现滚动条，overflow:hidden格式应该一直被使用。</p>
+
+	</li>
+
+	<li><strong>入口方法</strong>：在这种情况下，该文件的主要代码是在页面加载时执行。
+    这是JavaScript代码，还必须在JavaScript的<em>script</em>元素当中。任何mxGraph
+    应用程序的第一行应该检查浏览器的支持，如果不支持应该适当退出。如果浏览器支持，
+    mxGraph将在div容器内被创建，在开始/结束更新调用之间，三个单元被添加到图形中。</li>
+</ul>
+<br>
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_hello_world.png" name="ill_hello_world">
+<br>
+<em>mxGraph的HelloWorld示例</em></p>
+<br>
+
+<pre>&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;Hello, World! example for mxGraph&lt;/title&gt;
+
+   &lt;!-- 如果不在相同路径，设置<u>basepath</u>为开发库的路径 --&gt;
+   &lt;script type=<em>"text/javascript"</em>&gt;
+      mxBasePath = '../src';
+   &lt;/script&gt;
+
+   &lt;!-- 加载并<u>初始化</u>开发库 --&gt;
+   &lt;script type=<em>"text/javascript"</em> src=<em>"../src/js/mxClient.js"</em>&gt;&lt;/script&gt;
+
+   &lt;!-- 示例代码 --&gt;
+   &lt;script type=<em>"text/javascript"</em>&gt;
+      // 程序从这里开始。创建DOM节点中指定标记的简单图形。
+      // 方法在文档的onLoad事件处理中被调用（如下所示）。
+      function main(container)
+      {
+         // 检查浏览器支持
+         if (!mxClient.isBrowserSupported())
+         {
+            mxUtils.error('Browser is not supported!', 200, false);
+         }
+         else
+         {
+            // 在指定容器中创建图形
+            var graph = new mxGraph(container);
+
+            // 激活橡皮圈选择
+            new mxRubberband(graph);
+
+            // 拿到插入单元的默认父节点。
+            // 这通常是根节点的第一子节点（如0层）。
+            var parent = graph.getDefaultParent();
+
+            // 在一个步骤中，加入所有的单元到模型中
+            graph.getModel().beginUpdate();
+            try
+            {
+               var v1 = graph.insertVertex(parent, null,
+                        'Hello,', 20, 20, 80, 30);
+               var v2 = graph.insertVertex(parent, null,
+                        'World!', 200, 150, 80, 30);
+               var e1 = graph.insertEdge(parent, null, '', v1, v2);
+            }
+            finally
+            {
+               // 更新显示
+               graph.getModel().endUpdate();
+            }
+         }
+      };
+   &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;!-- 页面传递图形的容器给程序 --&gt;
+&lt;body onload=<em>"main(document.getElementById('graphContainer'))"</em>&gt;
+
+   &lt;!-- 创建一个带有网格背景图的容器 --&gt;
+   &lt;div id=<em>"graphContainer"</em>
+      style=<em>"overflow:hidden;width:321px;height:241px;background:url('editors/images/grid.gif')"</em>&gt;
+   &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>这个练习中的重要概念有：</p>
+<ul>
+	<li>mxClient.js是一个包含所有的mxGraph源代码的JavaScript文件。从Web服务器下载时，
+    获得包含所有的JavaScript的单个文件，要比分成多个独立文件要快得多，这是由于每个文件
+    都具有独立的请求/确认开销。无论服务器对于一个客户的并行接口的能力差异有多大，速度的
+    提升通常至少是两倍以上。</li>
+	<li>所有JavaScript代码及所有的依赖都是放在<em>head</em>元素中</li>
+	<li>默认情况下，Internet Explorer安全选项是开启的，将导致试图从本地文件系统中运行
+    JavaScript得到用户提示。这可以在选项菜单中禁用，但请注意，从本地文件系统上运行，
+    不是通常的mxGraph部署场景，这只会发生在开发过程中遇到。</li>
+	<li>您的应用程序可以写在HTML文件中并链接到应用程序，也可以写在另外的JavaScript文件中，再
+    被链接到HTML中，就像在本例中的mxClient.js文件使用的方式。</li>
+</ul>
+
+<h2><a name="deployment"></a><a name="2.4">2.4 </a>mxGraph部署和调试</h2>
+
+<p>mxclient.js文件有两个版本，一个用于生产用途，另一个用于的开发/调试使用。
+  <em>javascript/src/js/mxClient.js</em>的是生产版，
+  <em>javascript/debug/js/mxClient.js</em>的是用于开发。第一个版本剥离了所有的换行符，
+    以确保该文件是最可能小的尺寸。这样做的副作用，是破坏了JavaScript的调试器。在开发过程中，
+    我们建议您使用调试版本，其中有换行符，支持的在浏览器中启用调试。</p>
+
+<p>两个mxClient.js文件是包含整个mxGraph的JavaScript源代码，为减少文件大小，所有的空格和注释都被删除。
+  在调试过程中，如果您需要调试到mxGraph库本身，使用单独的源文件更加容易。在source.zip的
+  <em>javascript/devel</em>目录中，包含完整的源代码的文件。将它们解压到mxBasePath，并除去加载完整版
+  的mxClient.js文件，会使得调试mxGraph更加容易。需要注意的是，源文件的zip文件中的mxclient.js文件,
+  会引导加载的所有其他JavaScript源代码。</p>
+
+<p>通过压缩代码，客户端的程序的下载速度，可以进一步提高。所有的现代浏览器都支持传输在服务器端压缩过的内容，
+  而所有良好的网络服务器可以检测出不支持的浏览器，并发送未压缩版本作为备用。</p>
+
+<p>例如，在Apache Web服务器中有一个mod_deflate模块，通过一个标准的搜索，可以了解其使用的细节。
+  jgraph.com服务器一直在使用这个模块，没有发现有任何浏览器的支持问题。</p>
+
+<p>通过使用压缩，mxClient.js文件的大小从约600KB减少到只有130KB左右。对于使用最先进的网络用户而言，
+  区别并不明显，但在某些情况下，倾向于使用较小的版本。</p>
+
+<br>
+<h1><a name="model_cells"></a><a name="3">3 </a>mxGraph模型和单元</h1>
+
+<h2><a name="mxgraph_architecture"></a><a name="3.1">3.1 </a>mxGraph的核心架构</h2>
+
+<h3><a name="mxgraph_model"></a><a name="3.1.1">3.1.1 </a>mxGraph的模型</h3>
+
+<p>mxGraph模型是，描述了图形结构的核心的模型，被称为mxGraphModel，可以在model包中发现。
+  另外，对图形结构的添加，更改和清除是通过图模型API来完成的。该模型还提供了方法来确定图形
+  的结构，以及提供方法来设置，如能见度、分组和样式的视觉状态。</p>
+
+<p>然而，虽然对于模型进行的处理是被存储在模型上的，mxGraph被设计成​​一种通过mxGraph类的主要
+  公共API来使用的方式。 “添加该单元格到图形”的概念，是一个比“添加单元到图形的模型”的更自然
+  的动作。它是直观的，在模型上和单元上的方法被复制到了图形类上，而这些图形类上的方法被认为
+  是主要的公共API。本手册的其余部分，这些关键的API方法都被以粉红色的背景标示：</p>
+<div id="coreapi">
+<p>anExampleCoreAPIMethod()</p>
+</div>
+
+<p>因此，尽管许多的主要API通过mxGraph类来调用，请注意，mxGraphModel是基本的对象，
+  它存储着图形的数据结构。</p>
+
+<p>mxGraph使用事务处理系统来更新模型。在HelloWorld的例子里，我们看到如下代码：</p>
+
+<pre>// 在单个步骤中，添加单元到模型
+graph.getModel().beginUpdate();
+try
+{
+   var v1 = graph.addVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+   var v2 = graph.addVertex(parent, null, 'World!', 200, 150, 80, 30);
+   var e1 = graph.addEdge(parent, null, '', v1, v2);
+}
+finally
+{
+   // 更新显示
+   graph.getModel().endUpdate();
+}
+</pre>
+
+<p>执行的2个顶点和1个边缘的插入。对于模型的每一个变化，请调用beginUpdate()，
+  作出适当的调用更改模型，然后调用endUpate()方法来完成的变化，通知发送变化的事件出去。</p>
+
+<div id="coreapi">
+<p><strong>关键API方法：</strong></p>
+
+<ul>
+	<li><strong>mxGraphModel.beginUpdate() </strong>- 启动一个事务或子事务处理。</li>
+	<li><strong>mxGraphModel.endUpdate()</strong> - 完成一个事务或子事务处理。</li>
+	<li><strong>mxGraph.addVertex()</strong> - 添加一个新顶点到指定的父单元。</li>
+	<li><strong>mxGraph.addEdge()</strong> - 添加一个边缘到指定的父单元。</li>
+</ul>
+</div>
+
+<p><strong>注意</strong> – 从技术上讲，您并不需要用调用的开始和结束来环绕的您的改动。
+  此更新范围之外所做的更改会立即生效，并立即发出通知。事实上，更新的范围内的变化回直接作用与
+  制定模型上，更新范围是为了帮助控制的时间和事件通知的串接。除非更新包装会导致代码的美学问题，
+  它是值得使用的习惯，以避免可能出现的事件及撤消粒度的问题。</p>
+
+<p>注意模型的改变被包装在一个try块和endUpate()方法在finally块中的方式。这确保更新完成时，
+  即使存在改变模型时发生一个错误。您应该坚持使用这种模式，无论您执行模型的改动或只是为了便于
+  调试。</p>
+
+<p>先忽略对父单元的引用，将在本章的后面再做解释。</p>
+
+<h3><a name="transaction_model"></a><a name="3.1.2">3.1.2 </a>事务模型</h3>
+
+<p>以上蓝色块中的子事务，是指事务可以被嵌套。也就是说，在模型中有这样一个计数器，
+  每次调用<em>beginUpdate</em>计数递增，每次调用<em>endUpdate</em>计数递减。
+  在计数器增加超过1后，当该计数再次达到0时，模型的事务被认为是完成，模型的事件通知
+  被触发。</p>
+
+<p>这意味着，每个子代码的部分就可以（而且应该）被开始/结束组合来包围。在mxGraph中，
+  这创建单独的事务，被用来作为“库事务”的能力，能够为创建复合改动，一系列事件的所有
+  改动一起触发并且只需要创建一个撤消。自动布局是说明这个功能必需性的很好的例子。</p>
+
+<p>在自动布局中，在用户通常通过用户界面修改了图形，应用程序自动根据默认规则定位结果。
+  自动定位即布局，在开始/结束调用之间的独立算法，它并不知道具体的变化内容。因为所有的
+  在开始/结束变化范围内的更新是由直接作用在图形模型上，布局是根据模型的状态的变化来进
+  行。</p>
+
+<p>需要重点区分的是，作用在图形模型上的功能，是作为复合改动的一部分，还是原子态图形的
+  改动事件。在第一种情况下，如用于自动布局，该功能将模型就当成那样而作用于它。此方法只
+  用于作为复合变化的一部分时使用。应用程序的所有的其他部分，应该依据模型的改变事件而作
+  出反应。</p>
+
+<p>模型改变事件在最后endUpdate调用后，当计数器减为0的时候被触发，并标志着至少有图形上，
+  至少有一个原子态的改变发生了。改变事件包含着完整的已改变信息（参见后面的部分
+  <strong>Events</strong>更多详细信息）。</p>
+
+<h4><a name="model_change_methods"></a><a name="3.1.2.1">3.1.2.1 </a>模型改变的方法</h4>
+
+<p>下面是一个方法列表，包括的改变图形模型，并应被直接或间接地放置在一个更新的范围的：</p>
+
+<ul>
+	<li>add(parent, child, index)</li>
+	<li>remove(cell)</li>
+	<li>setCollapsed(cell, collapsed)</li>
+	<li>setGeometry(cell, geometry)</li>
+	<li>setRoot(root)</li>
+	<li>setStyle(cell, style)</li>
+	<li>setTerminal(cell, terminal, isSource)</li>
+	<li>setTerminals(edge,source,target)</li>
+	<li>setValue(cell, value)</li>
+	<li>setVisible(cell, visible)</li>
+</ul>
+
+<p>刚开始的时候，我们只关心添加和删除，以及几何形状和样式的编辑方法。请注意，
+  这些都不是核心API的方法，像往常一样，这些方法是对的mxGraph类，在适当情况下，
+  他们执行的是被封装的更新。</p>
+
+<p><em>设计背景</em> - 有些人对可视信息被存储的模型中感到困惑。这些属性包括单位的
+  定位，可视性和折叠状态。模型存储了这些属性的默认值，提供一个共同的地方对每个单元
+  进行设置，以及对每个视图的单独设置。模型是整个架构中，第一个通用的地方可以以全局
+  的方式设置这些属性。请记住，这是一个图形<em>可视化</em>库，可视化的部分是核心功能。</p>
+
+<h5><a name="inserting_cells"></a>插入单元</h5>
+
+<p>在<code>HelloWorld</code>应用程序中，创建的三个图形单元包括两个顶点和一个边。
+  如果您不熟悉基本图形理论和术语，请参阅<a href="http://en.wikipedia.org/wiki/Graph_theory">
+  维基百科条目</a>。</p>
+
+<p>您可以用add()方法添加模型的顶点和边。然而，对于使用这个库的一般目的，学习使用
+  mxGraph.insertVertex()和mxGraph.insertEdge()为核心的公共API中添加单元格。
+  模型的功能要求，要添加的单元已经被创建，而mxGraph.insertVertex()正好会为您创建
+  它们。</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul>
+	<li><strong>mxGraph.insertVertex(</strong><strong>parent,
+	id, value, x, y, width, height, style</strong><strong>)</strong> –
+  在调用开始/结束更新中，创建并插入一个新的顶点到模型中。</li>
+	<li><strong>mxGraph.insertEdge(</strong><strong>parent,
+	id, value, source, target, style</strong><strong>)</strong><strong>
+	– </strong>在调用开始/结束更新中，创建并插入一个新的边到模型中。</li>
+</ul>
+</div>
+
+<p><code>mxGraph.insertVertex()</code> 会创建一个mxCell对象并返回。方法的参数为：</p>
+
+<ul>
+<li><strong>parent</strong> – 组结构中此单元的直接父单元。我们会很快谈论到组结构，
+  但现在我们直接使用<code>graph.getDefaultParent();</code>作为默认的父单元，就像在
+HelloWorld这个例子一样。</li>
+
+<li><strong>id</strong> – 描述此单元的全局唯一身份号码，总是一个字符串。主要用于
+外部对这单元的引用。如果您不想自己维护这些号码，只需要传入一个空参数并确保mxGraphModel.isCreateIds()
+返回真即可。这样，模型就会管理这些号码，并保证它们的唯一性。</li>
+
+<li><strong>value</strong> – 此单元的用户对象。用户对象只是一些对象，可以让您把
+应用程序的商务逻辑与mxGraph的可视化呈现相关联。在手册的后面有详细地描述，这里我们就只用字符
+串就好，并把它们显示成顶点和边的标签。</li>
+
+<li><strong>x, y, width, height</strong> – 就像名字提到的，这是顶点的左上角的
+x和y的位置以及它的宽度和高度。</li>
+
+<li><strong>style</strong> – 将被应用到顶点的样式描述。关于样式，很快会有更详细的
+描述，简单来讲，就是一个特定格式的字符串。这个字符串有零个或多个样式名字和一些键/值配对，用来
+覆盖全局设置或者创立新的样式。除非我们要创建自己的样式，我们可以直接使用这些现有的设置。</li>
+</ul>
+
+<p>添加边的方法和添加顶点的方法使用了同样的参数。源和目标参数定义了边要连接的顶点。注意，源顶点
+和目标顶点需要已经被加入到模型中。</p>
+
+<h3><a name="mxcell"></a><a name="3.1.3">3.1.3 </a>mxCell</h3>
+
+<p>mxCell是顶点和边的单元对象。mxCell从模型那里复制了许多的方法。它们的主要差别在于，使用模型
+的方法会创建相关的事件通知以及撤销方法，使用单元的方法可以发生改变但不记录它们。这对于临时改变视觉
+效果，如动画或鼠标效果，是非常有用的。作为通用规则，一般使用模型的编辑API，除非您遇到什么特殊问题。</p>
+
+<p>当创建新的单元时，构造函数需要三部分参数，值（用户数据），几何参数以及样式。我们在回到讨论单元
+之前，先了解一下这三个概念。</p>
+
+<h4><a name="styles"></a><a name="3.1.3.1">3.1.3.1 </a>样式</h4>
+
+<p>样式和样式单的概念挺像CSS的样式单，事实上在mxGraph中也是在应用CSS，CSS只是影响HTML的DOM的全局
+样式。用您的编辑器打开util.mxConstants.js文件，搜索找到第一个的“STYLE_”。如果您向下
+拉滚动条，您会发现很多带有这个前缀的样式定义字符串。一些样式是应用到顶点，一些是应用到边，还有一下是两
+者都有。就像您看到的一样，这些视觉属性定义在它们操作的元素上。</p>
+
+<p>mxStylesheet是一个样式对象，包含着样式名和一系列样式的对应表：</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_styles.png" name="graphics5"><br>
+<em>样式集合中的样式列表</em></p>
+<br>
+
+<p>上面蓝框里的图显示了在mxStyleSheet里面的样式表。字符串“defaultVertex”是真实样式串/值配对列表
+中的键值。请注意，mxGraph创建两组默认样式，一个给顶点，一个给边。如果您看回helloworld这个例子，作
+为可选参数，没有任何样式值传入insertVertex或insertEdge。这种情况下，默认的样式会被使用。</p>
+
+<h5><a name="setting_cell_style"></a>设置单元的样式</h5>
+
+<p>如果您希望给一个单元指定非默认的样式，您必须在创建时传入（mxGraph的insertVertex和insertEdge都有
+为这个用途的可选参数），或者对这个单元用model.setStyle()设定样式。</p>
+
+<p>您传入的样式有样式名，请注意，样式名和键/值配对可以以任何顺序排列。下面是这个概念的示例，使用我们在
+helloworld中看到的对insertVertex的调用：</p>
+
+<ol>
+	<li>
+	<p>创建一个叫'ROUNDED'的样式，并应用到一个顶点上：</p>
+	<pre>var v1 = graph.insertVertex(parent, null, 'Hello', 20, 20, 80, 30, 'ROUNDED');</pre>
+	</li>
+
+	<li>
+	<p>用ROUNDED样式创建一个新顶点，覆盖笔画样式和填充颜色：</p>
+	<pre>var v1 = graph.insertVertex(parent, null, 'Hello',  20, 20, 80, 30, 'ROUNDED;strokeColor=red;fillColor=green');</pre>
+	</li>
+
+	<li>
+	<p>创建一个没有全局样式，但有本地笔画样式和填充颜色：</p>
+	<pre>var v1 = graph.insertVertex(parent, null, 'Hello', 20, 20, 80, 30, ';strokeColor=red;fillColor=green');</pre>
+	</li>
+	<li>
+	<p>用默认defaultVertex样式，但本地填充颜色的顶点：</p>
+	<pre>var v1 = graph.insertVertex(parent, null, 'Hello', 20, 20, 80, 30, 'defaultVertex;fillColor=blue');</pre>
+	</li>
+</ol>
+
+<br>
+<p>请注意，这种情况下，默认样式必须显示指明，在分号起始的字符串之后，没有指明样式名这个单元即会
+缺失全局样式。如果没有分号，则默认样式会被使用。</p>
+
+<p>同样，mxGraph在核心API中提供了工具方法来访问和修改单元的样式：</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul>
+<li>
+<strong>mxGraph.setCellStyle(style, cells)</strong> – 封装在开始/结束的更新中，
+指定一组单元的格式。
+</li>
+<li>
+<strong>mxGraph.getCellStyle(cell)</strong> – 返回指定单元的样式，融合了这种单元类型，
+任何本地的和默认全局的样式。
+</li>
+</ul>
+</div>
+
+<h5><a name="new_global_style"></a>创建新的全局样式</h5>
+<p>为创建如上的ROUNDED全局样式，您可以用如下的模板来在mxStyleSheet中创建并注册：</p>
+
+<pre>var style = new Object();
+style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_RECTANGLE;
+style[mxConstants.STYLE_OPACITY] = 50;
+style[mxConstants.STYLE_FONTCOLOR]= '#774400';
+graph.getStylesheet().putCellStyle('ROUNDED',style);
+</pre>
+
+<h4><a name="geometry"></a><a name="3.1.3.2">3.1.3.2 </a>几何</h4>
+
+<p>在helloworld例子中，我们看到在调用insertVertex方法时，传入了顶点的位置及大小信息。
+在JavaScript的坐标系统中，x是向右为正，y是向下为正，而对图形而言，是相对mxGraph放置的
+容器的绝对位置。</p>
+
+<p>有专门独立的mxGeometry而不是简单地用mxRectangle保存这个信息的原因，是因为边也有相应
+的几何信息。</p>
+
+<p>对于边而言，宽带和高度的值被忽略，而x和y对应的是边的标签位置。另外，边还有控制点的概念。
+它们是沿边的中间点位置，画线时需要经过。使用控制点有时也被称为<strong>边缘路由</strong>。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_edge_routing.png" name="ill_edge_routing"><br>
+<em>一条由两个控制点决定的边</em></p>
+
+<p>在几何里面还有两个重要的概念，相对位置和偏移</p>
+
+<h5><a name="relative_positioning"></a>相对位置</h5>
+
+<p>默认情况下，一个顶点的x和y位置是单元本身的边界矩形的左上角点与父单元的边界矩形的左上角点
+的偏移量。父单元和组的概念将在本章的后面进行讨论，这里就不深入细节，如果一个单元没有父单元，
+那么为了定位，图形容器就是它的父单元。</p>
+
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_non_relative_pos.png" name="ill_non_realtive_pos"><br>
+<em>非相对的顶点位置</em></p>
+<br>
+
+
+<p>对于一条边，在默认的非相对模式中，边的标签位置是对图形原点的绝对位置。</p>
+
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_non_realtive_edge_pos.png" name="ill_non_rel_edge_pos"><br>
+<em>非相对边的标签位置</em></p>
+<br>
+
+
+<p>对于相对模式中的顶点，(x,y)是沿父单元（宽度，高度）的单元的原点所在的比例。(0,0)是与父单元
+相同的原点，(1,1)是原点放在父单元的右下角。两个方向上，相对位置向0和1以上延伸。这有助于子单元保持
+对父单元整体大小的固定。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_rel_vert_pos.png" name="rel_vert_pos"><br>
+<em>相对顶点位置</em></p>
+<br>
+
+<p>最后，在相对模式下的边的标签位置，是根据边的中心来确定。边的x坐标是相对位置，-1是边的源端，
+1是边的目标端。边的y坐标是边的正交像素偏移量。下图显示了在相对模式下的各种边标签的x，y的值。
+请注意，对于一个直边，计算是非常简单的。对于有多个控制点的边，边是沿要跟踪段（段结束点和/或
+控制点之间的界线）来找到正确的沿边的距离。 y值是到该段的正交偏移量。</p>
+
+<p>对于边的标签，切换到使用相对位置，是一种常见的应用程序的偏好。导航到mxGraph的mxGraph.insertEdge()
+方法中，您会看到createEdge()这样的调用。在createEdge()中，几何上设置为相对位置，是使用这个原型创建
+每一条边的。这部分是因为在mxGraph中，辅助方法的数量，他们能够很容易改变默认行为。您应该在应用程序中，
+尝试尽可能多地使用mxGraph类API，享受这项福利。</p>
+
+<h5><a name="offsets"></a>偏移</h5>
+
+<p>在mxGeometry中，偏移量域是应用到单元<strong>标签</strong>的绝对x，y偏移量。在边标签的
+情况下，该偏移量总是施加在边标签已根据上面部分相对标志计算好之后。</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul><li><strong>mxGraph.resizeCell(cell, bounds)</strong> – 在开始/结束的更新调用
+之间，改变指定单元的大小到指定的边框。</li>
+<li><strong>mxGraph.resizeCells(cells, bounds)</strong> –
+在开始/结束的更新调用之间，改变指定队列中所有单元的大小到指定的边框。</li>
+</ul>
+</div>
+
+<h4><a name="user_objects"></a><a name="3.1.3.3">3.1.3.3 </a>用户对象</h4>
+
+<p>用户对象是给mxGraph一个环境，可以把商务逻辑与可视单元相关联。在HelloWorld的例子里，用户对象
+只是一个字符串，只是简单地用来呈现单元的标签。在更加复杂的应用里，用户对象可以是一个复杂的对象。
+这个对象的一些属性可以用来作为单元的显示使用，而对象的其余部分可以用来描述应用领域的逻辑关系。</p>
+
+<p>用一个简单的工作流或处理应用来做例子，假定我们有以下的图形 (<a href="http://www.jgraph.com/demo/mxgraph/editors/workfloweditor.html">这个例子已在线</a>,
+在任务窗口选择泳道的例子：</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_simple_workflow.png" name="ill_simple_workflow"><br>
+<em>一个简单工作流</em></p>
+<br>
+
+<p>通常情况下，该工作流程将存在于一些应用服务器和/或数据库。浏览器的用户连接到该服务器，
+或一些前端服务器连接到应用程序服务器和用户的Web应用程序要求的“订单”的工作流程。
+网站服务器取得该工作流中的数据，并且将其发送到客户端。</p>
+
+<p>mxGraph支持填充的模型上的服务器侧的处理和发送到客户端，然后再返回。请参阅后面的章节
+关于“I/O和服务器之间的通信”。</p>
+
+<p>数据的发送在视觉模型（图中）和以及业务逻辑（主要是包含在用户对象）都会发生。客户端将
+首先显示如上图。如果用户有权限编辑工作流程，他们通常会做两件事情：1）编辑图表，添加和删
+除顶点，以及改变的连接，2）编辑单元格的用户对象（顶点和/或边缘）。</p>
+
+<p>在在线演示中，如果右键点击菱形“检查库存”并选择属性，您会看到如下对话框：</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_vertex_props.png" name="ill_vertex_props"><br>
+<em>顶点的属性</em></p>
+<br>
+
+<p>这些属性显示的几何数据，标签，ID等，但对于一个对话框，用户可以很容易地单元的用户对象。
+这有可能是对工作流引擎的某个进程的参考，又或者实际上是对库存的检查。这可能是一个用于特定
+应用程序的机制，在服务器和客户端为远程方法调用分配一些识别标志。另一种类型的值可能是调用
+过程的返回对象，也许是一个布尔值或整数（在这种情况下，表示库存水平）。由于这个返回类型，
+它有可能可以加强对图形的约束，并提供视觉化的提示，如，出口边的决定检查不符合返回的顶点类型。</p>
+
+<p>接着，作为一个例子，出口边的用户对象可能包含一个标签和一个布尔状态。同样，基于mxGraph的
+编辑器可以提供一些手段来改变布尔值。在服务器上，在执行过程时，它可能会跟随那个对应的决策节点
+返回的布尔值的边。</p>
+
+<p>请记住，上面的例子是非常特定于某个领域的，它用来解释如何将用户对象映射到应用程序的业务逻辑。
+它呈现着mxGraph如何创建我们所谓的<strong>上下文图</strong>。这上下文是由顶点之间的连接和用户
+对象存储的业务逻辑构成。一个典型的应用程序从服务器接收到可视图和业务逻辑，可能允许编辑它们两个，
+然后发送到服务器的保持和/或执行。</p>
+
+<h4><a name="cell_types"></a><a name="3.1.3.4">3.1.3.4 </a>单元类型</h4>
+<p>如前所述，mxGraph是用此开发库的主要API，同样的原理也适用于单元格。单元格不暴露到图形的一个
+基本状态是单元格是一个顶点或者边，这个调用可以在单元格上或在模型上。</p>
+
+<p>在mxGraph上有两个标志量，顶点和边，以及在单元创建时设置这些为真的帮助方法。mxIGraphModel上
+的isVertex()和isEdge()是模型中用来决定单元类型的，两者都不是单独的对象。对技术上而言，在运行时
+可以切换单元的类型，但是在切换后，需要对无效化单元状态倍加小心（参加后面的章节）。同时，留心对于
+顶点和边而言几何对象参数意义的差别。通常，不建议在运行态修改单元的类型。</p>
+
+<h3><a name="group_structure"></a><a name="3.1.4">3.1.4 </a>组结构</h3>
+<p>在mxGraph中，组的概念就是逻辑上将单元与其他单元关联。在许多图形开发库中，这通常被称为子图形。
+在图形模型的数据结构中，组包含了一个或多个顶点或边，成为一个顶点或边（通常是一个顶点）的子节点。
+组使得mxGraph能够提供许多有用的功能：</p>
+
+<ul>
+	<li>子图，逻辑上区分图形的概念，在更高级别的图形中，每个子图只显示为一个单元。 </li>
+
+	<li>展开和折叠。折叠是指把一组单元用它们的父单元来显示。在<a href="http://www.jgraph.com/demo/mxgraph/editors/workfloweditor.html">在线工作流编辑器</a>
+示例中，在泳道的组单元例子里，点击左上角的小“-”就可以看到效果。这在下面的<em>复杂度管理</em>的
+章节有描述。</li>
+
+	<li>分层。层次的概念是指在图形的显示中，让单元以特定的顺序显示。</li>
+
+	<li>下钻，递升。这些概念是让子图可以当作完整的图形一样可视化和编辑。在<em>用户对象</em>的部分，我们看到了
+“检查库存”顶点作为一个单元。举个例子来说，一个开发员在描述的是每一个顶点是这个过程中的作为执行任务的软件进程。
+应用程序可能有一个选项，可以下钻到检查库存顶点。这将导致出现一个新的图形来详细描述了系统究竟是如何检查库存。
+该图可能有标题“检查库存”的父顶点，以表明它是一个孩子，以及一个选择可以退回到下个更高级别。</li>
+</ul>
+
+<p>在分组中，单元都分配了一个父单元。在最简单的情况下，所有的单元具有默认的父单元为他们的父单元。默认父单元是一种
+与图形具有相同的界限的无形的单元。在HelloWorld例子，这是由graph.getDefaultParent()返回的单元。一个顶点的x，y
+坐标是其相对于其父的位置，这样的情况下，默认分组（所有单元共享的缺省父）的单元定位也对于图形组件的绝对坐标。在所有
+细胞被添加到默认的根的情况下，如HelloWorld例子，组结构在逻辑上看起来如下图所示。</p>
+
+<p>请注意增加的第0层单元，在组结构中，这是默认的间接，使层允许添加其他单元的改变的要求。为正确性，我们包括它下面部分，
+但在以后的组图中，它将被省略。</p>
+
+
+<p><a name="ill_mx_man_hello_struct"><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_hello_struct.png" height="241" width="441" border="0"></a><br>
+<em>helloworld示例中的组结构</em></p>
+<br>
+
+<p>同时，请注意边标签的位置(几何上的x,y)是相对其父单元的。</p>
+
+<p>如果我们回头去看用户对象章节的简单工作流例子，我们可以看到组看起来是可视地。在这个例子里，
+组单元代表人，子顶点代表分配给这些人的任务。在这个例子里，逻辑上的组结构看起来像：</p>
+
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_log_group_struct.png" name="ill_mx_man_log_group_struct"><br>
+<em>工作流例子中的逻辑组结构</em></p>
+<br>
+
+<p>工作流操作的子顶点是黄色而泳道组顶点则被标记为蓝色。</p>
+
+<p>插入单元的到组结构是通过使用mxGraph类的insertVertex和insertEdge的父参数方法。这些方法
+通过设置对子单元相应的父单元，而且重要的是，通知父单元新子单元的加入。</p>
+
+<p>修改组结构是通过mxGraph.groupCells()和mxGraph.ungroupCells()的方法来实现的。</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul><li><strong>mxGraph.groupCells(group, border, cells)</strong> –
+在开始/结束更新之间，把指定的单元加入到指定的组</li>
+<li><strong>mxGraph.ungroupCells(cells)</strong> – 把特定的单元从它的父单元中移除，
+并把它们加入到它们父单元的父单元。操作之后的空组会被删除。这些操作都是在开始/结束更新之间发生。</li>
+</ul>
+</div>
+
+<h3><a name="complexity_management"></a><a name="3.1.5">3.1.5 </a>复杂度管理</h3>
+
+<p>在任何时候控制单元显示的数目有两个主要原因。第一是性能，任何操作中，绘制越来越多的单元会在某个
+时候遇到性能的瓶颈。第二个原因是易用性，人只能理解一定量的信息。上面所以关于组的概念，可以被用来
+降低用户在显示器上看到的信息的复杂度。</p>
+
+<h4><a name="folding"></a><a name="3.1.5.1">3.1.5.1 </a>折叠</h4>
+
+<p>折叠是我们用来描述组展开和折叠一个集合名词。我们把子顶点收起来不见称为单元被折叠了。有几个方法
+是与这个功能相关的：</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul><li><strong>mxGraph.foldCells(collapse, recurse, cells)</strong>
+– 在开始/结束更新之间，特定单元的折叠状态。</li></ul>
+</div>
+
+<p><strong>折叠相关的方法：</strong></p>
+
+<p><strong>mxGraph.isCellFoldable(cell, collapse)</strong> –
+对有子单元的单元而言，默认为真。</p>
+<p><strong>mxGraph.isCellCollapsed(cell)</strong> – 返回单元的折叠状态</p>
+
+<p>当组单元折叠时，默认发生三件事情：</p>
+
+<ul>
+	<li>单元的子单元变得看不见。</li>
+	<li>组单元的组边界会被使用。在mxGeometry中，有一个alternativeBounds字段而且在组单元中，
+默认地分别存储了展开和折叠状态的边界。通过对mxGraph.swapBounds()的调用来切换，并且是在
+一个foldCells()调用里来处理的。这允许折叠组被重置大小，同时当再次展开的时候大小看起来和折叠
+前一样。</li>
+	<li>默认状态下，会发生边推广。边推广是指已折叠的组中连接到子单元的边依然连接到折叠组外的单元，
+使它们显得象连接到折叠的父单元一样。</li>
+</ul>
+
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_expand_swim.png" name="ill_mx_man_expand_swim"><br>
+<em>展开泳道</em></p>
+
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_collapse_swim.png" name="ill_mx_man_collapse_swim"><br>
+<em>折叠泳道</em></p>
+
+<p>上面的两个图像展示了这三个概念。在展开状态上的组单元格的左上角显示一个有“-”字符的小盒子。
+这表明，点击此框折叠组单元。这样做，我们得到的底部组单元需要折叠尺寸的图像。没有离开子顶点和边
+的单元都是不可见的。最后，离开组单元的边被推广到显得连接到折叠的组单元上。点击出现的方块内的
+“+”字符，将展开组单元，并把它返回到其初始状态的图像。</p>
+
+<p>用mxGraph.foldCells()函数，您可以达到编程实现点击展开/折叠同样的效果。这方面的一个常见的
+用法是，当应用程序进行特定量的缩小的，单元被分组群聚，组单元折叠了（往往不带“-”框，因为应用程序
+在控制折叠）。这样，用户可见的是较少并较大的单元，逻辑上，每一个都代表其子单元。然后，在这个过程
+中展开，您可以提供了一种机制展开到一组。您可能还提供下钻或递升，将在后面解释​​。</p>
+
+<h4><a name="sub_graph_drilling"></a><a name="3.1.5.2">3.1.5.2 </a>子图、下钻/递升</h4>
+
+<p>有时，作为展开/折叠的替代品，或与它们组合在一起，您的图形会由好几个图形组成，嵌套成层次。下面是
+一个简单的例子：</p>
+
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_drill_down.png" name="ill_mx_man_drill_down"><br>
+<em>一个顶级工作流的例子</em></p>
+<br>
+
+<p>这个简单工作流有三个高级别的步骤。很明显，每个独立的步骤中包含了子步骤而我们将看看这个
+<em>解决问题</em>单元的子图。</p>
+
+<p>在<em>解决问题</em>的顶点下，我们创建了一些子顶点来更详细地呈现解决问题的流程，在这种
+情形下，解决问题的流程在<a href="http://en.wikipedia.org/wiki/Starship_Enterprise">联邦星舰进取号</a>。</p>
+
+<p>在这个用GraphEditor的例子里，在上图显示的选中的菜单选项调用了mxGraph.enterGroup(cell)
+这是对子图的一个核心API。</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul><li><strong>mxGraph.enterGroup(cell)</strong> – 使指定的单元成为显示区域的根单元。</li>
+<li><strong>mxGraph.exitGroup()</strong> - 使当前单元的父单元（如果有）成为新的根单元。</li>
+<li><strong>mxGraph.home()</strong> - 离开所有组，使默认父单元成为根单元。</li>
+</ul>
+</div>
+
+<p>到现在为止，图形的根单元是所有第一层单元的父顶点。用这个方法，您可以使组结构里的任何组单元成为根单元，
+这样父单元的子单元就可以作为完整的图形显示出来。</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_drilling.png" name="ill_mx_man_drilling"><br>
+<em>下钻到解决问题顶点的结果</em></p>
+
+<p>同样的图形如采用折叠方式会看起来像：</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_top_level.png" name="ill_mx_mantop_level" height="227" width="695" border="0"></p>
+<p>用<em>形状-&gt;离开组</em>离开组选项，它会调用mxGraph.exitGroup，带您回到原始的三顶点的
+顶级图。</p>
+
+<h4><a name="layer_filter"></a><a name="3.1.5.3">3.1.5.3 </a>分层和过滤</h4>
+
+<p>就像其它图形化应用一样，在mxGraph里，这里也有Z轴次序的概念。也就是说，当您看进去屏幕的方向时
+对象的次序。对象可以在其他对象的后面或前面，并且如果它们不透明，并且重叠，最后面的对象会被部分
+或者全部掩盖。让我们回头看看上面的<a href="#ill_mx_man_hello_struct">HelloWorld说明的图形结构</a>。
+子单元被以一个确定的顺序储存在父单元中（默认情况下是添加它们的顺序）。</p>
+
+<p>如果我们移动HelloWorld中的单元，我们会看到以下结果：</p>
+
+<p><img src="mxGraph%20User%20Manual%20-%20JavaScript%20Client_files/mx_man_overlap.png" name="ill_mx_man_overlap"><br>
+<em>重叠的顶点</em></p>
+
+<p>可以看到<em>World</em>顶点在<em>Hello</em>顶点的前面。这是因为在根单元的子单元中，<em>World</em>顶点
+和<em>Hello</em>顶点在次序集合中分别处于位置1和0，<em>World</em>顶点的子索引值比<em>Hello</em>顶点来
+的高的缘故。</p>
+
+<p>用mxGraph.orderCells改变次序。</p>
+
+<div id="coreapi">
+<p><strong>核心API方法：</strong></p>
+
+<ul><li><strong>mxGraph.orderCells(back, cells)</strong> – 在开始/结束更新之间，根据标志，将
+一队单元移到其他同伴的前面或后面。</li></ul>
+</div>
+
+<p>mxGraph中的同伴单元是指任何拥有相同父单元的单元。因此，对<em>Hello</em>顶点调用此方法，会使其覆盖
+<em>World</em>顶点。</p>
+
+<p>排列和分组可以扩展，以形成逻辑分层的组。单元将通过深度优先搜索来绘制。以HelloWorld为例，可以想象一下，
+<em>Hello</em>顶点和<em>World</em>顶点都包含了一些层次的子单元。<em>Hello</em>顶点及其顶点会比
+<em>World</em>顶点或其子顶点先绘制。如果<em>Hello</em>顶点和<em>World</em>顶点是不可见组单元，那么
+您两个层次的单元中，其中的一整组会比另一组的任何一个都要先绘制。您同样可以通过切换不可见组单元的次序来切换
+层次的次序。</p>
+
+<p>分层的概念在layers.html的例子演示。按钮用来设置图层组单元的可视性。这个例子与过滤的概念联系非常紧密。</p>
+
+<p>筛选具有一些特定的属性的单元来显示。一种提供过滤功能的方法是在渲染单元前，检查某些状态。另一种方法是，
+如果是过滤条件，是简单的并可以预先知道，是按组分配过滤的单元。执行这个过滤操作时，可以显示或隐藏这些组。</p>
+
+<br>
+
+<hr size="1">
+© 2006-2010 by JGraph Ltd.
+
+
+</body></html>

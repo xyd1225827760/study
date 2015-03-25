@@ -1,0 +1,24 @@
+excel的导入导出
+页面打印
+摄像头打开
+jq输入框自动完成
+html加入如下代码
+<script type="text/javascript" src="/js/plugins/jquery-autocomplete/jquery.autocomplete.js.min.js"></script>
+<link rel='stylesheet' href="/js/plugins/jquery-autocomplete/jquery.autocomplete.css" type='text/css' media='screen' />
+站内搜索
+在线浏览pdf、word
+图标集文件
+做开发文档
+ajax表单提交
+<script src="/js/jquery.form.js.min.js"></script>
+日期插件（http://www.my97.net）
+<script src="/js/plugins/datepicker/WdatePicker.js" ></script>
+图片上传和裁剪插件
+
+RSS
+
+js文件异步加载
+require.js
+1、编写样式
+表格、按钮、表单、图标
+布局、
